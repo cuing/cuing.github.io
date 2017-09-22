@@ -1323,11 +1323,11 @@
                     duration: 1000,
                     complete: function (anim) {
                         document.getElementById('splashId').style.display = 'none';
+                        document.getElementsByTagName('body')[0].style.overflow='auto'
                         // completedLogEl.value = 'completed : ' + anim.completed;
                     }
                 });
 
-                document.getElementsByTagName('body')[0].style.overflow='auto'
 
 
 
