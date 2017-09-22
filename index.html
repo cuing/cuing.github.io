@@ -1013,8 +1013,10 @@
 
             drawHeart();
             // document.getElementsByClassName('my-gallery')[0].style.display = 'block';
-        }, 8000)
-        drawText();
+        }, 8500)
+        setTimeout(function() {
+            drawText();
+        }, 500)
 
         function loadImage(src, fn) {
             var img = new Image();
