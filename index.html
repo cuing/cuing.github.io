@@ -19,8 +19,6 @@
             padding: 0px;
             height: 100%;
             width: 100%;
-            background-image: -webkit-linear-gradient(179deg, rgba(240, 128, 128, 0.5), rgba(126, 192, 238, 0.5));
-            background-image: linear-gradient( 179deg, rgba(240, 128, 128, 0.5), rgba(126, 192, 238, 0.5));
         }
 
         body {
@@ -44,6 +42,11 @@
             text-align: center;
             position: relative;
             display: none;
+            background: -webkit-radial-gradient(bottom ellipse, #1c2837 0%, #050608 100%);
+            background: radial-gradient(ellipse at bottom, #1c2837 0%, #050608 100%);
+            background: url(http://cuing-1253529229.cossh.myqcloud.com/confectionary.png)
+
+
         }
 
         .my-gallery figure {
@@ -637,8 +640,8 @@
         </figure>
 
         <figure itemprop="associatedMedia" itemscope>
-            <a href="http://cuing-1253529229.cossh.myqcloud.com/marry/9.jpg" itemprop="contentUrl" data-size="768x1152">
-                <img src="http://cuing-1253529229.cossh.myqcloud.com/marry/min/9.jpg" itemprop="thumbnail" alt="Image description" />
+            <a href="http://cuing-1253529229.cossh.myqcloud.com/marry/15.jpg" itemprop="contentUrl" data-size="768x1152">
+                <img src="http://cuing-1253529229.cossh.myqcloud.com/marry/min/15.jpg" itemprop="thumbnail" alt="Image description" />
             </a>
         </figure>
 
@@ -668,8 +671,8 @@
             </a>
         </figure>
         <figure itemprop="associatedMedia" itemscope>
-            <a href="http://cuing-1253529229.cossh.myqcloud.com/marry/15.jpg" itemprop="contentUrl" data-size="691x1037">
-                <img src="http://cuing-1253529229.cossh.myqcloud.com/marry/min/15.jpg" itemprop="thumbnail" alt="Image description" />
+            <a href="http://cuing-1253529229.cossh.myqcloud.com/marry/9.jpg" itemprop="contentUrl" data-size="691x1037">
+                <img src="http://cuing-1253529229.cossh.myqcloud.com/marry/min/9.jpg" itemprop="thumbnail" alt="Image description" />
             </a>
         </figure>
         <figure itemprop="associatedMedia" itemscope>
@@ -680,7 +683,7 @@
 
         <figure itemprop="associatedMedia" itemscope>
             <a href="http://cuing-1253529229.cossh.myqcloud.com/marry/18.jpg" itemprop="contentUrl" data-size="691x1037">
-                <img src="http://cuing-1253529229.cossh.myqcloud.com/marry/min/15.jpg" itemprop="thumbnail" alt="Image description" />
+                <img src="http://cuing-1253529229.cossh.myqcloud.com/marry/min/18.jpg" itemprop="thumbnail" alt="Image description" />
             </a>
         </figure>
 
@@ -718,9 +721,9 @@
 
                     <div class="pswp__counter"></div>
 
-                    <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                    <!-- <button class="pswp__button pswp__button--close" title="Close (Esc)"></button> -->
 
-                    <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                    <!-- <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button> -->
 
                     <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
                     <!-- element will get class pswp__preloader--active when preloader is running -->
@@ -1097,7 +1100,7 @@
                     } else {
                         setTimeout(function () {
                             drawText1();
-                        }, 2000)
+                        }, 1500)
                     }
                 }
             })();
