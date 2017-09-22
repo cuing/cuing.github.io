@@ -16,7 +16,6 @@
             padding: 0px;
             height: 100%;
             width: 100%;
-            background: #3e6fa3;
             background-image: -webkit-linear-gradient(179deg, rgba(240, 128, 128, 0.5), rgba(126, 192, 238, 0.5));
             background-image: linear-gradient( 179deg, rgba(240, 128, 128, 0.5), rgba(126, 192, 238, 0.5));
         }
@@ -24,7 +23,6 @@
         body {
             -webkit-font-smoothing: antialiased;
             background-attachment: fixed;
-            overflow: hidden;
         }
 
         figure {
@@ -42,7 +40,7 @@
             column-gap: 0;
             text-align: center;
             position: relative;
-            /* display: none; */
+            display: none;
         }
 
         .my-gallery figure {
@@ -1317,13 +1315,14 @@
 
             // handle successful unlock
             function successHandler() {
+                document.getElementsByClassName('my-gallery')[0].style.display='block'
                 anime({
                     targets: '#splashId',
                     opacity: 0,
                     duration: 1000,
                     complete: function (anim) {
                         document.getElementById('splashId').style.display = 'none';
-                        document.getElementsByTagName('body')[0].style.overflow='auto'
+                        // document.getElementsByTagName('body')[0].style.overflow='auto'
                         // completedLogEl.value = 'completed : ' + anim.completed;
                     }
                 });
