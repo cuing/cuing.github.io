@@ -1,1 +1,1393 @@
-hello world
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta name="full-screen" content="yes">
+    <meta name="x5-fullscreen" content="true">
+    <script src="http://cuing-1253529229.cossh.myqcloud.com/photoswipe.min.js"></script>
+
+    <link rel="stylesheet" href="http://cuing-1253529229.cossh.myqcloud.com/default-skin.css">
+    <link rel="stylesheet" href="http://cuing-1253529229.cossh.myqcloud.com/photoswipe.css">
+    <style>
+        html,
+        body {
+            margin: 0px;
+            padding: 0px;
+            height: 100%;
+            width: 100%;
+            background: #3e6fa3;
+            background-image: -webkit-linear-gradient(179deg, rgba(240, 128, 128, 0.5), rgba(126, 192, 238, 0.5));
+            background-image: linear-gradient( 179deg, rgba(240, 128, 128, 0.5), rgba(126, 192, 238, 0.5));
+        }
+
+        body {
+            -webkit-font-smoothing: antialiased;
+            background-attachment: fixed;
+            overflow: hidden;
+        }
+
+        figure {
+            display: block;
+            -webkit-margin-before: 0;
+            -webkit-margin-after: 0;
+            -webkit-margin-start: 0;
+            -webkit-margin-end: 0;
+        }
+
+        .my-gallery {
+            -webkit-column-count: 2;
+            -webkit-column-gap: 0;
+            column-count: 2;
+            column-gap: 0;
+            text-align: center;
+            position: relative;
+            /* display: none; */
+        }
+
+        .my-gallery figure {
+            padding: 5px;
+        }
+
+        .my-gallery figure img {
+            width: 100%;
+        }
+        /* solar */
+        /*
+  Malik Dellidj - @Dathink
+
+  Solar System orbit animation true time scaled
+
+  Revolution of planets in earth days (from Wikipedia)
+  Mercury : ~87,5 days
+  Venus : ~224,7 days
+  Earth : ~365,2563 days
+    + Moon : ~27,3216 days (around earth)
+  Mars : ~687 days (~1,8 year)
+  Jupiter : ~4 331 days (~12 years)
+  Saturn : ~10 747 days (~30 years)
+  Uranus : ~30 589 days (~84 years)
+  Neptune : ~59 802 days (~165 years)
+  Pluto : ~90 580 days (~248 years)
+*/
+
+        body {
+            -webkit-overflow-scrolling: touch;
+            /* background: -webkit-radial-gradient(bottom ellipse, #1c2837 0%, #050608 100%); */
+            /* background: radial-gradient(ellipse at bottom, #1c2837 0%, #050608 100%); */
+            /* background-attachment: fixed; */
+        }
+
+        h1 {
+            font-weight: 300;
+            font-size: 2.5em;
+            text-transform: uppercase;
+            font-family: Lato;
+            line-height: 1.6em;
+            letter-spacing: .1em;
+        }
+
+        a,
+        a:visited {
+            text-decoration: none;
+            color: white;
+            opacity: .7;
+        }
+
+        a:hover,
+        a:visited:hover {
+            opacity: 1;
+        }
+
+        a.icon,
+        a:visited.icon {
+            margin-right: 2px;
+            padding: 3px;
+        }
+
+        .description {
+            padding: 30px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 25%;
+            z-index: 999;
+        }
+
+        .description p {
+            font-size: .9em;
+        }
+
+        .description p+p {
+            margin-top: 20px;
+        }
+
+        .description p.author {
+            font-size: .7em;
+        }
+
+        .description p.author .fa-heart {
+            color: #860014;
+        }
+
+        hr {
+            margin: 26px 0;
+            border: 0;
+            border-top: 1px solid white;
+            background: transparent;
+            width: 25%;
+            opacity: .1;
+        }
+
+        code {
+            color: #ae94c0;
+            font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
+            font-size: .9em;
+        }
+
+        .solar-syst {
+            margin: 0 auto;
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .solar-syst:after {
+            content: "";
+            position: absolute;
+            height: 2px;
+            width: 2px;
+            top: -2px;
+            background: white;
+            box-shadow: 240px 1631px 0 0px rgba(255, 255, 255, 0.405), 819px 128px 0 0px rgba(255, 255, 255, 0.744), 272px 764px 0 0px rgba(255, 255, 255, 0.678), 984px 1432px 0 0px rgba(255, 255, 255, 0.018), 1707px 39px 0 0px rgba(255, 255, 255, 0.142), 936px 1680px 0 0px rgba(255, 255, 255, 0.526), 1410px 480px 0 0px rgba(255, 255, 255, 0.763), 450px 229px 0 0px rgba(255, 255, 255, 0.095), 85px 1725px 0 0px rgba(255, 255, 255, 0.004), 1003px 1150px 0 0px rgba(255, 255, 255, 0.128), 695px 817px 0 0px rgba(255, 255, 255, 0.837), 943px 1482px 0 0px rgba(255, 255, 255, 0.8), 1484px 1596px 0 0px rgba(255, 255, 255, 0.996), 1374px 306px 0 0px rgba(255, 255, 255, 0.167), 1671px 1368px 0 0px rgba(255, 255, 255, 0.89), 604px 1639px 0 0px rgba(255, 255, 255, 0.338), 1268px 126px 0 0px rgba(255, 255, 255, 0.158), 169px 1300px 0 0px rgba(255, 255, 255, 0.582), 533px 213px 0 0px rgba(255, 255, 255, 0.303), 537px 850px 0 0px rgba(255, 255, 255, 0.584), 391px 1101px 0 0px rgba(255, 255, 255, 0.151), 13px 810px 0 0px rgba(255, 255, 255, 0.622), 1554px 1518px 0 0px rgba(255, 255, 255, 0.242), 1686px 1731px 0 0px rgba(255, 255, 255, 0.778), 1624px 784px 0 0px rgba(255, 255, 255, 0.807), 797px 1441px 0 0px rgba(255, 255, 255, 0.06), 1799px 1791px 0 0px rgba(255, 255, 255, 0.325), 1371px 1553px 0 0px rgba(255, 255, 255, 0.214), 1289px 1357px 0 0px rgba(255, 255, 255, 0.798), 13px 630px 0 0px rgba(255, 255, 255, 0.745), 1210px 1159px 0 0px rgba(255, 255, 255, 0.075), 973px 505px 0 0px rgba(255, 255, 255, 0.125), 48px 1461px 0 0px rgba(255, 255, 255, 0.336), 1270px 1457px 0 0px rgba(255, 255, 255, 0.612), 1695px 148px 0 0px rgba(255, 255, 255, 0.26), 257px 1px 0 0px rgba(255, 255, 255, 0.722), 1038px 505px 0 0px rgba(255, 255, 255, 0.118), 1593px 654px 0 0px rgba(255, 255, 255, 0.283), 801px 178px 0 0px rgba(255, 255, 255, 0.088), 641px 617px 0 0px rgba(255, 255, 255, 0.66), 1766px 1180px 0 0px rgba(255, 255, 255, 0.381), 527px 872px 0 0px rgba(255, 255, 255, 0.456), 1228px 1256px 0 0px rgba(255, 255, 255, 0.822), 679px 236px 0 0px rgba(255, 255, 255, 0.357), 1051px 1345px 0 0px rgba(255, 255, 255, 0.025), 1277px 49px 0 0px rgba(255, 255, 255, 0.833), 1414px 1445px 0 0px rgba(255, 255, 255, 0.401), 654px 612px 0 0px rgba(255, 255, 255, 0.799), 1314px 1663px 0 0px rgba(255, 255, 255, 0.613), 1086px 1293px 0 0px rgba(255, 255, 255, 0.921), 1323px 412px 0 0px rgba(255, 255, 255, 0.59), 638px 650px 0 0px rgba(255, 255, 255, 0.254), 218px 41px 0 0px rgba(255, 255, 255, 0.979), 577px 1514px 0 0px rgba(255, 255, 255, 0.875), 622px 417px 0 0px rgba(255, 255, 255, 0.24), 719px 308px 0 0px rgba(255, 255, 255, 0.307), 1119px 32px 0 0px rgba(255, 255, 255, 0.266), 812px 1441px 0 0px rgba(255, 255, 255, 0.557), 1174px 447px 0 0px rgba(255, 255, 255, 0.11), 1074px 1405px 0 0px rgba(255, 255, 255, 0.465), 1616px 345px 0 0px rgba(255, 255, 255, 0.93), 1228px 576px 0 0px rgba(255, 255, 255, 0.657), 1730px 500px 0 0px rgba(255, 255, 255, 0.402), 1377px 603px 0 0px rgba(255, 255, 255, 0.82), 947px 1038px 0 0px rgba(255, 255, 255, 0.468), 940px 1079px 0 0px rgba(255, 255, 255, 0.58), 1644px 1651px 0 0px rgba(255, 255, 255, 0.077), 1635px 647px 0 0px rgba(255, 255, 255, 0.684), 1777px 214px 0 0px rgba(255, 255, 255, 0.509), 957px 1668px 0 0px rgba(255, 255, 255, 0.759), 199px 85px 0 0px rgba(255, 255, 255, 0.361), 162px 1037px 0 0px rgba(255, 255, 255, 0.398), 1428px 1026px 0 0px rgba(255, 255, 255, 0.298), 1766px 1487px 0 0px rgba(255, 255, 255, 0.414), 874px 428px 0 0px rgba(255, 255, 255, 0.193), 44px 1495px 0 0px rgba(255, 255, 255, 0.115), 1132px 1274px 0 0px rgba(255, 255, 255, 0.708), 192px 455px 0 0px rgba(255, 255, 255, 0.589), 1327px 1098px 0 0px rgba(255, 255, 255, 0.518), 640px 498px 0 0px rgba(255, 255, 255, 0.265), 1423px 1597px 0 0px rgba(255, 255, 255, 0.484), 1539px 547px 0 0px rgba(255, 255, 255, 0.805), 1615px 917px 0 0px rgba(255, 255, 255, 0.851), 269px 677px 0 0px rgba(255, 255, 255, 0.015), 338px 632px 0 0px rgba(255, 255, 255, 0.227), 1608px 1467px 0 0px rgba(255, 255, 255, 0.298), 814px 1530px 0 0px rgba(255, 255, 255, 0.539), 239px 376px 0 0px rgba(255, 255, 255, 0.359), 633px 552px 0 0px rgba(255, 255, 255, 0.293), 919px 1566px 0 0px rgba(255, 255, 255, 0.287), 239px 1698px 0 0px rgba(255, 255, 255, 0.946), 869px 1133px 0 0px rgba(255, 255, 255, 0.105), 8px 562px 0 0px rgba(255, 255, 255, 0.103), 1579px 1354px 0 0px rgba(255, 255, 255, 0.021), 607px 437px 0 0px rgba(255, 255, 255, 0.628), 35px 233px 0 0px rgba(255, 255, 255, 0.4), 999px 753px 0 0px rgba(255, 255, 255, 0.396), 755px 187px 0 0px rgba(255, 255, 255, 0.894), 1596px 1629px 0 0px rgba(255, 255, 255, 0.538), 1138px 1117px 0 0px rgba(255, 255, 255, 0.916), 1544px 1314px 0 0px rgba(255, 255, 255, 0.691), 64px 24px 0 0px rgba(255, 255, 255, 0.649), 770px 212px 0 0px rgba(255, 255, 255, 0.885), 66px 148px 0 0px rgba(255, 255, 255, 0.82), 1372px 549px 0 0px rgba(255, 255, 255, 0.984), 1244px 1424px 0 0px rgba(255, 255, 255, 0.7), 965px 1090px 0 0px rgba(255, 255, 255, 0.179), 560px 1704px 0 0px rgba(255, 255, 255, 0.972), 590px 1563px 0 0px rgba(255, 255, 255, 0.927), 101px 945px 0 0px rgba(255, 255, 255, 0.489), 367px 1380px 0 0px rgba(255, 255, 255, 0.143), 1251px 944px 0 0px rgba(255, 255, 255, 0.421), 1050px 1036px 0 0px rgba(255, 255, 255, 0.85), 124px 1164px 0 0px rgba(255, 255, 255, 0.281), 1082px 634px 0 0px rgba(255, 255, 255, 0.888), 1207px 1055px 0 0px rgba(255, 255, 255, 0.822), 1038px 955px 0 0px rgba(255, 255, 255, 0.858), 79px 789px 0 0px rgba(255, 255, 255, 0.436), 304px 1293px 0 0px rgba(255, 255, 255, 0.362), 890px 1295px 0 0px rgba(255, 255, 255, 0.723), 1067px 1182px 0 0px rgba(255, 255, 255, 0.781), 145px 1131px 0 0px rgba(255, 255, 255, 0.548), 1731px 147px 0 0px rgba(255, 255, 255, 0.565), 1722px 790px 0 0px rgba(255, 255, 255, 0.623), 848px 1685px 0 0px rgba(255, 255, 255, 0.538), 1621px 1412px 0 0px rgba(255, 255, 255, 0.912), 1401px 1102px 0 0px rgba(255, 255, 255, 0.79), 358px 218px 0 0px rgba(255, 255, 255, 0.516), 15px 729px 0 0px rgba(255, 255, 255, 0.289), 249px 228px 0 0px rgba(255, 255, 255, 0.849), 825px 1182px 0 0px rgba(255, 255, 255, 0.207), 1799px 690px 0 0px rgba(255, 255, 255, 0.909), 15px 222px 0 0px rgba(255, 255, 255, 0.329), 1037px 1103px 0 0px rgba(255, 255, 255, 0.71), 453px 218px 0 0px rgba(255, 255, 255, 0.165), 1042px 52px 0 0px rgba(255, 255, 255, 0.698), 218px 707px 0 0px rgba(255, 255, 255, 0.454), 388px 945px 0 0px rgba(255, 255, 255, 0.878), 555px 118px 0 0px rgba(255, 255, 255, 0.444), 982px 1412px 0 0px rgba(255, 255, 255, 0.642), 255px 760px 0 0px rgba(255, 255, 255, 0.963), 276px 1085px 0 0px rgba(255, 255, 255, 0.346), 1573px 260px 0 0px rgba(255, 255, 255, 0.723), 1102px 1191px 0 0px rgba(255, 255, 255, 0.344), 1642px 832px 0 0px rgba(255, 255, 255, 0.259), 1585px 1747px 0 0px rgba(255, 255, 255, 0.772), 761px 834px 0 0px rgba(255, 255, 255, 0.719), 794px 221px 0 0px rgba(255, 255, 255, 0.773), 240px 1174px 0 0px rgba(255, 255, 255, 0.911), 163px 364px 0 0px rgba(255, 255, 255, 0.137), 602px 1259px 0 0px rgba(255, 255, 255, 0.821), 795px 1234px 0 0px rgba(255, 255, 255, 0.188), 1129px 291px 0 0px rgba(255, 255, 255, 0.981), 1567px 340px 0 0px rgba(255, 255, 255, 0.156), 1234px 308px 0 0px rgba(255, 255, 255, 0.867), 34px 943px 0 0px rgba(255, 255, 255, 0.794), 171px 753px 0 0px rgba(255, 255, 255, 0.642), 943px 1679px 0 0px rgba(255, 255, 255, 0.626), 1506px 782px 0 0px rgba(255, 255, 255, 0.918), 1132px 249px 0 0px rgba(255, 255, 255, 0.413), 1200px 569px 0 0px rgba(255, 255, 255, 0.583), 1464px 1794px 0 0px rgba(255, 255, 255, 0.853), 304px 723px 0 0px rgba(255, 255, 255, 0.745), 1230px 1062px 0 0px rgba(255, 255, 255, 0.817), 991px 1311px 0 0px rgba(255, 255, 255, 0.905), 76px 894px 0 0px rgba(255, 255, 255, 0.396), 1081px 819px 0 0px rgba(255, 255, 255, 0.463), 1570px 663px 0 0px rgba(255, 255, 255, 0.799), 16px 671px 0 0px rgba(255, 255, 255, 0.739), 47px 984px 0 0px rgba(255, 255, 255, 0.663), 1257px 293px 0 0px rgba(255, 255, 255, 0.316), 1533px 743px 0 0px rgba(255, 255, 255, 0.754), 1708px 493px 0 0px rgba(255, 255, 255, 0.28), 166px 887px 0 0px rgba(255, 255, 255, 0.498), 166px 366px 0 0px rgba(255, 255, 255, 0.531), 1598px 568px 0 0px rgba(255, 255, 255, 0.228), 1781px 46px 0 0px rgba(255, 255, 255, 0.819), 1243px 1713px 0 0px rgba(255, 255, 255, 0.926), 1004px 1298px 0 0px rgba(255, 255, 255, 0.305), 278px 563px 0 0px rgba(255, 255, 255, 0.667), 1601px 207px 0 0px rgba(255, 255, 255, 0.424), 91px 1375px 0 0px rgba(255, 255, 255, 0.232), 938px 188px 0 0px rgba(255, 255, 255, 0.292), 593px 1745px 0 0px rgba(255, 255, 255, 0.463), 839px 1205px 0 0px rgba(255, 255, 255, 0.542), 1677px 930px 0 0px rgba(255, 255, 255, 0.735), 1158px 994px 0 0px rgba(255, 255, 255, 0.7), 1700px 1518px 0 0px rgba(255, 255, 255, 0.254), 5px 959px 0 0px rgba(255, 255, 255, 0.501), 1399px 1318px 0 0px rgba(255, 255, 255, 0.27), 1608px 1391px 0 0px rgba(255, 255, 255, 0.284), 877px 401px 0 0px rgba(255, 255, 255, 0.516), 116px 1565px 0 0px rgba(255, 255, 255, 0.063), 1639px 444px 0 0px rgba(255, 255, 255, 0.912), 1761px 1640px 0 0px rgba(255, 255, 255, 0.916), 1470px 374px 0 0px rgba(255, 255, 255, 0.798), 895px 251px 0 0px rgba(255, 255, 255, 0.353), 413px 531px 0 0px rgba(255, 255, 255, 0.609), 1439px 805px 0 0px rgba(255, 255, 255, 0.054), 1552px 490px 0 0px rgba(255, 255, 255, 0.905), 1315px 1207px 0 0px rgba(255, 255, 255, 0.824), 280px 1667px 0 0px rgba(255, 255, 255, 0.067), 892px 290px 0 0px rgba(255, 255, 255, 0.423), 1534px 290px 0 0px rgba(255, 255, 255, 0.178), 838px 337px 0 0px rgba(255, 255, 255, 0.063), 1439px 822px 0 0px rgba(255, 255, 255, 0.114), 1483px 375px 0 0px rgba(255, 255, 255, 0.21), 837px 1738px 0 0px rgba(255, 255, 255, 0.035), 677px 333px 0 0px rgba(255, 255, 255, 0.008), 456px 291px 0 0px rgba(255, 255, 255, 0.728), 468px 1403px 0 0px rgba(255, 255, 255, 0.989), 1370px 887px 0 0px rgba(255, 255, 255, 0.949), 1671px 1769px 0 0px rgba(255, 255, 255, 0.998), 725px 432px 0 0px rgba(255, 255, 255, 0.658), 595px 1791px 0 0px rgba(255, 255, 255, 0.097), 944px 1352px 0 0px rgba(255, 255, 255, 0.289), 682px 1372px 0 0px rgba(255, 255, 255, 0.577), 491px 1630px 0 0px rgba(255, 255, 255, 0.764), 1318px 1273px 0 0px rgba(255, 255, 255, 0.811), 52px 514px 0 0px rgba(255, 255, 255, 0.079), 1013px 536px 0 0px rgba(255, 255, 255, 0.095), 909px 495px 0 0px rgba(255, 255, 255, 0.247), 933px 1645px 0 0px rgba(255, 255, 255, 0.964), 1097px 1070px 0 0px rgba(255, 255, 255, 0.962), 1478px 952px 0 0px rgba(255, 255, 255, 0.647), 1656px 734px 0 0px rgba(255, 255, 255, 0.964), 277px 309px 0 0px rgba(255, 255, 255, 0.777), 1678px 1515px 0 0px rgba(255, 255, 255, 0.319), 974px 211px 0 0px rgba(255, 255, 255, 0.323), 274px 13px 0 0px rgba(255, 255, 255, 0.594), 1547px 263px 0 0px rgba(255, 255, 255, 0.315), 1106px 1326px 0 0px rgba(255, 255, 255, 0.613), 471px 778px 0 0px rgba(255, 255, 255, 0.474), 954px 52px 0 0px rgba(255, 255, 255, 0.258), 1202px 1653px 0 0px rgba(255, 255, 255, 0.336), 1132px 147px 0 0px rgba(255, 255, 255, 0.239), 432px 427px 0 0px rgba(255, 255, 255, 0.899), 480px 711px 0 0px rgba(255, 255, 255, 0.819), 1400px 782px 0 0px rgba(255, 255, 255, 0.645), 132px 1376px 0 0px rgba(255, 255, 255, 0.483), 474px 1162px 0 0px rgba(255, 255, 255, 0.042), 600px 977px 0 0px rgba(255, 255, 255, 0.808), 276px 1251px 0 0px rgba(255, 255, 255, 0.446), 791px 71px 0 0px rgba(255, 255, 255, 0.466), 592px 502px 0 0px rgba(255, 255, 255, 0.584), 839px 1170px 0 0px rgba(255, 255, 255, 0.359), 1266px 623px 0 0px rgba(255, 255, 255, 0.589), 141px 1342px 0 0px rgba(255, 255, 255, 0.873), 1602px 641px 0 0px rgba(255, 255, 255, 0.695), 248px 344px 0 0px rgba(255, 255, 255, 0.753), 1125px 1264px 0 0px rgba(255, 255, 255, 0.549), 1432px 315px 0 0px rgba(255, 255, 255, 0.583), 1437px 214px 0 0px rgba(255, 255, 255, 0.437), 1492px 222px 0 0px rgba(255, 255, 255, 0.018), 1673px 321px 0 0px rgba(255, 255, 255, 0.276), 58px 1343px 0 0px rgba(255, 255, 255, 0.404), 1452px 55px 0 0px rgba(255, 255, 255, 0.369), 1750px 881px 0 0px rgba(255, 255, 255, 0.471), 461px 1226px 0 0px rgba(255, 255, 255, 0.942), 1247px 562px 0 0px rgba(255, 255, 255, 0.65), 1290px 986px 0 0px rgba(255, 255, 255, 0.647), 960px 520px 0 0px rgba(255, 255, 255, 0.686), 214px 1678px 0 0px rgba(255, 255, 255, 0.99), 1017px 1573px 0 0px rgba(255, 255, 255, 0.327), 488px 477px 0 0px rgba(255, 255, 255, 0.032), 721px 1175px 0 0px rgba(255, 255, 255, 0.653), 510px 12px 0 0px rgba(255, 255, 255, 0.815), 1286px 1416px 0 0px rgba(255, 255, 255, 0.76), 1674px 500px 0 0px rgba(255, 255, 255, 0.44), 1036px 33px 0 0px rgba(255, 255, 255, 0.943), 448px 1006px 0 0px rgba(255, 255, 255, 0.715), 980px 1015px 0 0px rgba(255, 255, 255, 0.223), 554px 1275px 0 0px rgba(255, 255, 255, 0.972), 728px 1305px 0 0px rgba(255, 255, 255, 0.597), 310px 1696px 0 0px rgba(255, 255, 255, 0.071), 1265px 1458px 0 0px rgba(255, 255, 255, 0.39), 803px 760px 0 0px rgba(255, 255, 255, 0.813), 1041px 1477px 0 0px rgba(255, 255, 255, 0.629), 642px 290px 0 0px rgba(255, 255, 255, 0.883), 1623px 323px 0 0px rgba(255, 255, 255, 0.764), 781px 303px 0 0px rgba(255, 255, 255, 0.785), 129px 1673px 0 0px rgba(255, 255, 255, 0.718), 636px 150px 0 0px rgba(255, 255, 255, 0.972), 446px 1733px 0 0px rgba(255, 255, 255, 0.222), 1358px 1171px 0 0px rgba(255, 255, 255, 0.881), 446px 520px 0 0px rgba(255, 255, 255, 0.506), 1495px 1422px 0 0px rgba(255, 255, 255, 0.33), 904px 1166px 0 0px rgba(255, 255, 255, 0.22), 1691px 1167px 0 0px rgba(255, 255, 255, 0.412), 1260px 1440px 0 0px rgba(255, 255, 255, 0.871), 1348px 788px 0 0px rgba(255, 255, 255, 0.678), 1529px 1759px 0 0px rgba(255, 255, 255, 0.058), 32px 466px 0 0px rgba(255, 255, 255, 0.765), 1767px 1386px 0 0px rgba(255, 255, 255, 0.34), 1269px 498px 0 0px rgba(255, 255, 255, 0.613), 715px 970px 0 0px rgba(255, 255, 255, 0.985), 887px 606px 0 0px rgba(255, 255, 255, 0.603), 980px 1600px 0 0px rgba(255, 255, 255, 0.96), 370px 1544px 0 0px rgba(255, 255, 255, 0.184), 1346px 1149px 0 0px rgba(255, 255, 255, 0.726), 740px 1682px 0 0px rgba(255, 255, 255, 0.761), 1289px 1380px 0 0px rgba(255, 255, 255, 0.714), 722px 434px 0 0px rgba(255, 255, 255, 0.538), 1717px 384px 0 0px rgba(255, 255, 255, 0.108), 291px 731px 0 0px rgba(255, 255, 255, 0.882), 1484px 1583px 0 0px rgba(255, 255, 255, 0.127), 1388px 1701px 0 0px rgba(255, 255, 255, 0.206), 1061px 251px 0 0px rgba(255, 255, 255, 0.339), 515px 871px 0 0px rgba(255, 255, 255, 0.144), 174px 1474px 0 0px rgba(255, 255, 255, 0.54), 665px 309px 0 0px rgba(255, 255, 255, 0.556), 378px 539px 0 0px rgba(255, 255, 255, 0.266), 1148px 1548px 0 0px rgba(255, 255, 255, 0.283), 485px 1462px 0 0px rgba(255, 255, 255, 0.482), 589px 1460px 0 0px rgba(255, 255, 255, 0.767), 188px 330px 0 0px rgba(255, 255, 255, 0.464), 1485px 697px 0 0px rgba(255, 255, 255, 0.024), 1471px 79px 0 0px rgba(255, 255, 255, 0.091), 758px 594px 0 0px rgba(255, 255, 255, 0.897), 1087px 555px 0 0px rgba(255, 255, 255, 0.752), 1311px 172px 0 0px rgba(255, 255, 255, 0.472), 807px 484px 0 0px rgba(255, 255, 255, 0.966), 1089px 569px 0 0px rgba(255, 255, 255, 0.278), 1611px 556px 0 0px rgba(255, 255, 255, 0.611), 1716px 1577px 0 0px rgba(255, 255, 255, 0.038), 374px 1117px 0 0px rgba(255, 255, 255, 0.997), 931px 1702px 0 0px rgba(255, 255, 255, 0.527), 27px 1120px 0 0px rgba(255, 255, 255, 0.223), 1619px 313px 0 0px rgba(255, 255, 255, 0.265), 1361px 831px 0 0px rgba(255, 255, 255, 0.675), 413px 1572px 0 0px rgba(255, 255, 255, 0.062), 1241px 700px 0 0px rgba(255, 255, 255, 0.283), 818px 1324px 0 0px rgba(255, 255, 255, 0.055), 1188px 55px 0 0px rgba(255, 255, 255, 0.057), 471px 1022px 0 0px rgba(255, 255, 255, 0.006), 325px 257px 0 0px rgba(255, 255, 255, 0.963), 1202px 1630px 0 0px rgba(255, 255, 255, 0.647), 1317px 341px 0 0px rgba(255, 255, 255, 0.943), 297px 432px 0 0px rgba(255, 255, 255, 0.578), 224px 1206px 0 0px rgba(255, 255, 255, 0.232), 874px 652px 0 0px rgba(255, 255, 255, 0.26), 1325px 1419px 0 0px rgba(255, 255, 255, 0.331), 1413px 523px 0 0px rgba(255, 255, 255, 0.503), 1572px 877px 0 0px rgba(255, 255, 255, 0.835), 371px 179px 0 0px rgba(255, 255, 255, 0.95), 251px 195px 0 0px rgba(255, 255, 255, 0.12), 216px 1210px 0 0px rgba(255, 255, 255, 0.952), 1388px 1292px 0 0px rgba(255, 255, 255, 0.799), 397px 1143px 0 0px rgba(255, 255, 255, 0.66), 1493px 975px 0 0px rgba(255, 255, 255, 0.448), 1577px 1235px 0 0px rgba(255, 255, 255, 0.352), 699px 1009px 0 0px rgba(255, 255, 255, 0.283), 81px 1450px 0 0px rgba(255, 255, 255, 0.032), 33px 308px 0 0px rgba(255, 255, 255, 0.246), 707px 1425px 0 0px rgba(255, 255, 255, 0.651), 1416px 634px 0 0px rgba(255, 255, 255, 0.228), 1774px 944px 0 0px rgba(255, 255, 255, 0.924), 627px 1726px 0 0px rgba(255, 255, 255, 0.165), 784px 715px 0 0px rgba(255, 255, 255, 0.741), 346px 1428px 0 0px rgba(255, 255, 255, 0.164), 821px 456px 0 0px rgba(255, 255, 255, 0.712), 494px 347px 0 0px rgba(255, 255, 255, 0.541), 248px 1296px 0 0px rgba(255, 255, 255, 0.016), 1588px 1270px 0 0px rgba(255, 255, 255, 0.315), 454px 1591px 0 0px rgba(255, 255, 255, 0.125), 1305px 126px 0 0px rgba(255, 255, 255, 0.732), 1656px 30px 0 0px rgba(255, 255, 255, 0.476), 744px 699px 0 0px rgba(255, 255, 255, 0.647), 75px 48px 0 0px rgba(255, 255, 255, 0.148), 1557px 1260px 0 0px rgba(255, 255, 255, 0.603), 622px 1167px 0 0px rgba(255, 255, 255, 0.922), 762px 826px 0 0px rgba(255, 255, 255, 0.485), 521px 516px 0 0px rgba(255, 255, 255, 0.418), 1315px 505px 0 0px rgba(255, 255, 255, 0.481), 108px 352px 0 0px rgba(255, 255, 255, 0.421), 184px 993px 0 0px rgba(255, 255, 255, 0.483), 1750px 43px 0 0px rgba(255, 255, 255, 0.575), 779px 608px 0 0px rgba(255, 255, 255, 0.235), 12px 1097px 0 0px rgba(255, 255, 255, 0.199), 618px 802px 0 0px rgba(255, 255, 255, 0.472), 853px 1386px 0 0px rgba(255, 255, 255, 0.587), 145px 1786px 0 0px rgba(255, 255, 255, 0.495), 1326px 751px 0 0px rgba(255, 255, 255, 0.123), 265px 1567px 0 0px rgba(255, 255, 255, 0.927), 1628px 269px 0 0px rgba(255, 255, 255, 0.078), 1143px 431px 0 0px rgba(255, 255, 255, 0.618), 1643px 74px 0 0px rgba(255, 255, 255, 0.917), 1249px 1469px 0 0px rgba(255, 255, 255, 0.617), 458px 1247px 0 0px rgba(255, 255, 255, 0.663), 607px 1145px 0 0px rgba(255, 255, 255, 0.173), 882px 1035px 0 0px rgba(255, 255, 255, 0.288), 1058px 90px 0 0px rgba(255, 255, 255, 0.557), 1746px 767px 0 0px rgba(255, 255, 255, 0.163), 1421px 355px 0 0px rgba(255, 255, 255, 0.445), 167px 817px 0 0px rgba(255, 255, 255, 0.658), 1505px 1242px 0 0px rgba(255, 255, 255, 0.425), 576px 1506px 0 0px rgba(255, 255, 255, 0.1), 1783px 214px 0 0px rgba(255, 255, 255, 0.561), 865px 395px 0 0px rgba(255, 255, 255, 0.591), 999px 704px 0 0px rgba(255, 255, 255, 0.707), 292px 1431px 0 0px rgba(255, 255, 255, 0.431), 1633px 1730px 0 0px rgba(255, 255, 255, 0.45), 1142px 1015px 0 0px rgba(255, 255, 255, 0.749), 144px 120px 0 0px rgba(255, 255, 255, 0.073), 317px 494px 0 0px rgba(255, 255, 255, 0.131), 1080px 775px 0 0px rgba(255, 255, 255, 0.828), 1457px 818px 0 0px rgba(255, 255, 255, 0.941), 1464px 266px 0 0px rgba(255, 255, 255, 0.835), 1709px 71px 0 0px rgba(255, 255, 255, 0.354), 1799px 1462px 0 0px rgba(255, 255, 255, 0.207), 1458px 264px 0 0px rgba(255, 255, 255, 0.196), 321px 1192px 0 0px rgba(255, 255, 255, 0.215), 230px 503px 0 0px rgba(255, 255, 255, 0.438), 535px 769px 0 0px rgba(255, 255, 255, 0.2), 345px 310px 0 0px rgba(255, 255, 255, 0.562), 1107px 1337px 0 0px rgba(255, 255, 255, 0.766), 750px 604px 0 0px rgba(255, 255, 255, 0.271), 1593px 1326px 0 0px rgba(255, 255, 255, 0.143), 814px 703px 0 0px rgba(255, 255, 255, 0.37), 314px 1446px 0 0px rgba(255, 255, 255, 0.912), 559px 51px 0 0px rgba(255, 255, 255, 0.194), 118px 623px 0 0px rgba(255, 255, 255, 0.965), 278px 9px 0 0px rgba(255, 255, 255, 0.534), 1530px 1236px 0 0px rgba(255, 255, 255, 0.869), 185px 38px 0 0px rgba(255, 255, 255, 0.582), 893px 1081px 0 0px rgba(255, 255, 255, 0.498), 150px 1706px 0 0px rgba(255, 255, 255, 0.402), 1617px 621px 0 0px rgba(255, 255, 255, 0.956), 1368px 469px 0 0px rgba(255, 255, 255, 0.682), 1339px 983px 0 0px rgba(255, 255, 255, 0.704), 1552px 312px 0 0px rgba(255, 255, 255, 0.369), 1448px 950px 0 0px rgba(255, 255, 255, 0.591), 104px 1301px 0 0px rgba(255, 255, 255, 0.294), 1349px 1240px 0 0px rgba(255, 255, 255, 0.419), 742px 566px 0 0px rgba(255, 255, 255, 0.122), 1112px 1712px 0 0px rgba(255, 255, 255, 0.895), 639px 398px 0 0px rgba(255, 255, 255, 0.435), 1049px 387px 0 0px rgba(255, 255, 255, 0.759), 1292px 473px 0 0px rgba(255, 255, 255, 0.97), 1428px 1391px 0 0px rgba(255, 255, 255, 0.138), 882px 538px 0 0px rgba(255, 255, 255, 0.165), 292px 552px 0 0px rgba(255, 255, 255, 0.158), 778px 993px 0 0px rgba(255, 255, 255, 0.202), 1526px 1696px 0 0px rgba(255, 255, 255, 0.569), 1464px 1390px 0 0px rgba(255, 255, 255, 0.485), 557px 196px 0 0px rgba(255, 255, 255, 0.419), 499px 299px 0 0px rgba(255, 255, 255, 0.836), 260px 660px 0 0px rgba(255, 255, 255, 0.158), 711px 540px 0 0px rgba(255, 255, 255, 0.926), 542px 1605px 0 0px rgba(255, 255, 255, 0.939), 1081px 1631px 0 0px rgba(255, 255, 255, 0.217), 1107px 911px 0 0px rgba(255, 255, 255, 0.591), 1367px 53px 0 0px rgba(255, 255, 255, 0.725), 962px 1581px 0 0px rgba(255, 255, 255, 0.447), 1693px 1256px 0 0px rgba(255, 255, 255, 0.952), 1772px 215px 0 0px rgba(255, 255, 255, 0.233), 1449px 1766px 0 0px rgba(255, 255, 255, 0.416), 432px 1116px 0 0px rgba(255, 255, 255, 0.56), 1127px 74px 0 0px rgba(255, 255, 255, 0.602), 900px 569px 0 0px rgba(255, 255, 255, 0.758), 431px 787px 0 0px rgba(255, 255, 255, 0.68), 20px 479px 0 0px rgba(255, 255, 255, 0.684), 226px 405px 0 0px rgba(255, 255, 255, 0.948), 366px 809px 0 0px rgba(255, 255, 255, 0.838), 308px 1579px 0 0px rgba(255, 255, 255, 0.843), 1094px 70px 0 0px rgba(255, 255, 255, 0.002), 111px 1417px 0 0px rgba(255, 255, 255, 0.707), 591px 405px 0 0px rgba(255, 255, 255, 0.12), 1325px 630px 0 0px rgba(255, 255, 255, 0.801), 1450px 336px 0 0px rgba(255, 255, 255, 0.189), 1066px 1715px 0 0px rgba(255, 255, 255, 0.07), 1412px 1602px 0 0px rgba(255, 255, 255, 0.21), 620px 1190px 0 0px rgba(255, 255, 255, 0.389), 1261px 1465px 0 0px rgba(255, 255, 255, 0.213), 501px 1570px 0 0px rgba(255, 255, 255, 0.31), 1397px 771px 0 0px rgba(255, 255, 255, 0.339), 1303px 220px 0 0px rgba(255, 255, 255, 0.706), 890px 331px 0 0px rgba(255, 255, 255, 0.97), 1048px 43px 0 0px rgba(255, 255, 255, 0.015), 1545px 1565px 0 0px rgba(255, 255, 255, 0.698), 641px 518px 0 0px rgba(255, 255, 255, 0.45), 1085px 556px 0 0px rgba(255, 255, 255, 0.61), 1300px 859px 0 0px rgba(255, 255, 255, 0.637), 792px 591px 0 0px rgba(255, 255, 255, 0.554), 1636px 1016px 0 0px rgba(255, 255, 255, 0.693), 143px 821px 0 0px rgba(255, 255, 255, 0.132), 295px 503px 0 0px rgba(255, 255, 255, 0.822), 1350px 706px 0 0px rgba(255, 255, 255, 0.099), 1054px 192px 0 0px rgba(255, 255, 255, 0.093), 768px 1516px 0 0px rgba(255, 255, 255, 0.786), 1770px 733px 0 0px rgba(255, 255, 255, 0.957), 1210px 816px 0 0px rgba(255, 255, 255, 0.542), 881px 455px 0 0px rgba(255, 255, 255, 0.308), 439px 1176px 0 0px rgba(255, 255, 255, 0.085), 860px 654px 0 0px rgba(255, 255, 255, 0.343), 61px 104px 0 0px rgba(255, 255, 255, 0.61), 324px 121px 0 0px rgba(255, 255, 255, 0.307), 318px 1576px 0 0px rgba(255, 255, 255, 0.148), 52px 1669px 0 0px rgba(255, 255, 255, 0.496), 225px 876px 0 0px rgba(255, 255, 255, 0.143);
+            border-radius: 100px;
+        }
+
+        .solar-syst div {
+            border-radius: 1000px;
+            top: 50%;
+            left: 50%;
+            position: absolute;
+            z-index: 999;
+        }
+
+        .solar-syst div:not(.sun) {
+            border: 1px solid rgba(102, 166, 229, 0.12);
+        }
+
+        .solar-syst div:not(.sun):before {
+            left: 50%;
+            border-radius: 100px;
+            content: "";
+            position: absolute;
+        }
+
+        .solar-syst div:not(.asteroids-belt):before {
+            box-shadow: inset 0 6px 0 -2px rgba(0, 0, 0, 0.25);
+        }
+
+        .sun {
+            background: -webkit-radial-gradient(center ellipse, #ffd000 1%, #f9b700 39%, #f9b700 39%, #e06317 100%);
+            background: radial-gradient(ellipse at center, #ffd000 1%, #f9b700 39%, #f9b700 39%, #e06317 100%);
+            height: 40px;
+            width: 40px;
+            margin-top: -20px;
+            margin-left: -20px;
+            background-clip: padding-box;
+            border: 0 !important;
+            background-position: -28px -103px;
+            background-size: 175%;
+            box-shadow: 0 0 10px 2px rgba(255, 107, 0, 0.4), 0 0 22px 11px rgba(255, 203, 0, 0.13);
+        }
+
+        .mercury {
+            height: 70px;
+            width: 70px;
+            margin-top: -35px;
+            margin-left: -35px;
+            -webkit-animation: orb 7.18673s linear infinite;
+            animation: orb 7.18673s linear infinite;
+        }
+
+        .mercury:before {
+            height: 4px;
+            width: 4px;
+            background: #9f5e26;
+            margin-top: -2px;
+            margin-left: -2px;
+        }
+
+        .venus {
+            height: 100px;
+            width: 100px;
+            margin-top: -50px;
+            margin-left: -50px;
+            -webkit-animation: orb 18.45553s linear infinite;
+            animation: orb 18.45553s linear infinite;
+        }
+
+        .venus:before {
+            height: 8px;
+            width: 8px;
+            background: #BEB768;
+            margin-top: -4px;
+            margin-left: -4px;
+        }
+
+        .earth {
+            height: 145px;
+            width: 145px;
+            margin-top: -72.5px;
+            margin-left: -72.5px;
+            -webkit-animation: orb 30s linear infinite;
+            animation: orb 30s linear infinite;
+        }
+
+        .earth:before {
+            height: 6px;
+            width: 6px;
+            background: #11abe9;
+            margin-top: -3px;
+            margin-left: -3px;
+        }
+
+        .earth:after {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 50%;
+            top: 0px;
+            margin-left: -9px;
+            margin-top: -9px;
+            border-radius: 100px;
+            box-shadow: 0 -10px 0 -8px grey;
+            -webkit-animation: orb 2.24404s linear infinite;
+            animation: orb 2.24404s linear infinite;
+        }
+
+        .mars {
+            height: 190px;
+            width: 190px;
+            margin-top: -95px;
+            margin-left: -95px;
+            -webkit-animation: orb 56.42613s linear infinite;
+            animation: orb 56.42613s linear infinite;
+        }
+
+        .mars:before {
+            height: 6px;
+            width: 6px;
+            background: #cf3921;
+            margin-top: -3px;
+            margin-left: -3px;
+        }
+
+        .jupiter {
+            height: 340px;
+            width: 340px;
+            margin-top: -170px;
+            margin-left: -170px;
+            -webkit-animation: orb 355.72282s linear infinite;
+            animation: orb 355.72282s linear infinite;
+        }
+
+        .jupiter:before {
+            height: 18px;
+            width: 18px;
+            background: #c76e2a;
+            margin-top: -9px;
+            margin-left: -9px;
+        }
+
+        .saturn {
+            height: 440px;
+            width: 440px;
+            margin-top: -220px;
+            margin-left: -220px;
+            -webkit-animation: orb 882.69525s linear infinite;
+            animation: orb 882.69525s linear infinite;
+        }
+
+        .saturn:before {
+            height: 12px;
+            width: 12px;
+            background: #e7c194;
+            margin-top: -6px;
+            margin-left: -6px;
+        }
+
+        .saturn:after {
+            position: absolute;
+            content: "";
+            height: 2.34%;
+            width: 4.676%;
+            left: 50%;
+            top: 0px;
+            -webkit-transform: rotateZ(-52deg);
+            transform: rotateZ(-52deg);
+            margin-left: -2.3%;
+            margin-top: -1.2%;
+            border-radius: 50% 50% 50% 50%;
+            box-shadow: 0 1px 0 1px #987641, 3px 1px 0 #987641, -3px 1px 0 #987641;
+            -webkit-animation: orb 882.69525s linear infinite;
+            animation: orb 882.69525s linear infinite;
+            -webkit-animation-direction: reverse;
+            animation-direction: reverse;
+            -webkit-transform-origin: 52% 60%;
+            transform-origin: 52% 60%;
+        }
+
+        .uranus {
+            height: 520px;
+            width: 520px;
+            margin-top: -260px;
+            margin-left: -260px;
+            -webkit-animation: orb 2512.4002s linear infinite;
+            animation: orb 2512.4002s linear infinite;
+        }
+
+        .uranus:before {
+            height: 10px;
+            width: 10px;
+            background: #b5e3e3;
+            margin-top: -5px;
+            margin-left: -5px;
+        }
+
+        .neptune {
+            height: 630px;
+            width: 630px;
+            margin-top: -315px;
+            margin-left: -315px;
+            -webkit-animation: orb 4911.78386s linear infinite;
+            animation: orb 4911.78386s linear infinite;
+        }
+
+        .neptune:before {
+            height: 10px;
+            width: 10px;
+            background: #175e9e;
+            margin-top: -5px;
+            margin-left: -5px;
+        }
+
+        .asteroids-belt {
+            opacity: .7;
+            border-color: transparent !important;
+            height: 300px;
+            width: 300px;
+            margin-top: -150px;
+            margin-left: -150px;
+            -webkit-animation: orb 179.95583s linear infinite;
+            animation: orb 179.95583s linear infinite;
+            overflow: hidden;
+        }
+
+        .asteroids-belt:before {
+            top: 50%;
+            height: 210px;
+            width: 210px;
+            margin-left: -105px;
+            margin-top: -105px;
+            background: transparent;
+            border-radius: 140px !important;
+            box-shadow: -114px -6px 0 -104px rgba(255, 255, 255, 0.379), 144px -10px 0 -104px rgba(255, 255, 255, 0.563), -58px 16px 0 -104px rgba(255, 255, 255, 0.327), 79px 69px 0 -104px rgba(255, 255, 255, 0.441), -45px -120px 0 -104px rgba(255, 255, 255, 0.838), -69px 23px 0 -104px rgba(255, 255, 255, 0.847), 40px 76px 0 -104px rgba(255, 255, 255, 0.381), -50px 122px 0 -104px rgba(255, 255, 255, 0.938), 112px 14px 0 -104px rgba(255, 255, 255, 0.34), -113px -123px 0 -104px rgba(255, 255, 255, 0.06), 89px 4px 0 -104px rgba(255, 255, 255, 0.707), -131px -122px 0 -104px rgba(255, 255, 255, 0.559), 136px -82px 0 -104px rgba(255, 255, 255, 0.09), -28px -23px 0 -104px rgba(255, 255, 255, 0.997), -108px -93px 0 -104px rgba(255, 255, 255, 0.019), 137px 37px 0 -104px rgba(255, 255, 255, 0.656), 94px 120px 0 -104px rgba(255, 255, 255, 0.325), -122px -49px 0 -104px rgba(255, 255, 255, 0.601), 24px -33px 0 -104px rgba(255, 255, 255, 0.884), -111px -101px 0 -104px rgba(255, 255, 255, 0.638), -53px -122px 0 -104px rgba(255, 255, 255, 0.494), -25px 70px 0 -104px rgba(255, 255, 255, 0.401), 92px -57px 0 -104px rgba(255, 255, 255, 0.001), -142px -94px 0 -104px rgba(255, 255, 255, 0.194), -33px -28px 0 -104px rgba(255, 255, 255, 0.178), 80px 105px 0 -104px rgba(255, 255, 255, 0.396), -86px -101px 0 -104px rgba(255, 255, 255, 0.765), 71px 80px 0 -104px rgba(255, 255, 255, 0.769), 122px -101px 0 -104px rgba(255, 255, 255, 0.295), -122px 1px 0 -104px rgba(255, 255, 255, 0.815), -142px 81px 0 -104px rgba(255, 255, 255, 0.974), 45px 23px 0 -104px rgba(255, 255, 255, 0.992), -4px 65px 0 -104px rgba(255, 255, 255, 0.857), -56px 84px 0 -104px rgba(255, 255, 255, 0.268), -60px 124px 0 -104px rgba(255, 255, 255, 0.869), -73px -63px 0 -104px rgba(255, 255, 255, 0.924), -116px 10px 0 -104px rgba(255, 255, 255, 0.009), 34px 32px 0 -104px rgba(255, 255, 255, 0.764), -65px 94px 0 -104px rgba(255, 255, 255, 0.048), 78px -71px 0 -104px rgba(255, 255, 255, 0.05), 60px -24px 0 -104px rgba(255, 255, 255, 0.785), -134px -47px 0 -104px rgba(255, 255, 255, 0.183), 64px -17px 0 -104px rgba(255, 255, 255, 0.718), 49px 122px 0 -104px rgba(255, 255, 255, 0.22), 58px -2px 0 -104px rgba(255, 255, 255, 0.05), 82px -20px 0 -104px rgba(255, 255, 255, 0.604), 80px -128px 0 -104px rgba(255, 255, 255, 0.703), -118px 25px 0 -104px rgba(255, 255, 255, 0.735), 86px 54px 0 -104px rgba(255, 255, 255, 0.665), -80px 138px 0 -104px rgba(255, 255, 255, 0.603), 130px -89px 0 -104px rgba(255, 255, 255, 0.385), 7px 12px 0 -104px rgba(255, 255, 255, 0.544), 17px 20px 0 -104px rgba(255, 255, 255, 0.146), 102px 64px 0 -104px rgba(255, 255, 255, 0.172), 1px -10px 0 -104px rgba(255, 255, 255, 0.571), -135px 67px 0 -104px rgba(255, 255, 255, 0.99), -124px -34px 0 -104px rgba(255, 255, 255, 0.089), 63px -45px 0 -104px rgba(255, 255, 255, 0.523), -144px -84px 0 -104px rgba(255, 255, 255, 0.223), -57px -35px 0 -104px rgba(255, 255, 255, 0.407), -100px -132px 0 -104px rgba(255, 255, 255, 0.801), 39px -74px 0 -104px rgba(255, 255, 255, 0.881), 133px 44px 0 -104px rgba(255, 255, 255, 0.255), 42px 106px 0 -104px rgba(255, 255, 255, 0.135), -105px 86px 0 -104px rgba(255, 255, 255, 0.125), 141px -42px 0 -104px rgba(255, 255, 255, 0.516), -50px -122px 0 -104px rgba(255, 255, 255, 0.561), 118px -114px 0 -104px rgba(255, 255, 255, 0.125), 127px 36px 0 -104px rgba(255, 255, 255, 0.623), -106px 25px 0 -104px rgba(255, 255, 255, 0.073), -52px -96px 0 -104px rgba(255, 255, 255, 0.77), -12px 57px 0 -104px rgba(255, 255, 255, 0.277), 5px 10px 0 -104px rgba(255, 255, 255, 0.066), -77px 81px 0 -104px rgba(255, 255, 255, 0.49), -42px 76px 0 -104px rgba(255, 255, 255, 0.746), 137px 143px 0 -104px rgba(255, 255, 255, 0.67), 120px 48px 0 -104px rgba(255, 255, 255, 0.36), 44px 52px 0 -104px rgba(255, 255, 255, 0.545), 126px -70px 0 -104px rgba(255, 255, 255, 0.616), 87px 44px 0 -104px rgba(255, 255, 255, 0.983), 125px -140px 0 -104px rgba(255, 255, 255, 0.611), 145px 99px 0 -104px rgba(255, 255, 255, 0.516), 20px 59px 0 -104px rgba(255, 255, 255, 0.157), 87px 123px 0 -104px rgba(255, 255, 255, 0.176), 72px -102px 0 -104px rgba(255, 255, 255, 0.914), 30px 44px 0 -104px rgba(255, 255, 255, 0.335), 65px 10px 0 -104px rgba(255, 255, 255, 0.189), -126px 116px 0 -104px rgba(255, 255, 255, 0.198), 130px -103px 0 -104px rgba(255, 255, 255, 0.453), -100px 136px 0 -104px rgba(255, 255, 255, 0.168), 67px -47px 0 -104px rgba(255, 255, 255, 0.053), 102px 24px 0 -104px rgba(255, 255, 255, 0.486), 80px 92px 0 -104px rgba(255, 255, 255, 0.241), 25px 0px 0 -104px rgba(255, 255, 255, 0.831), -36px -14px 0 -104px rgba(255, 255, 255, 0.24), 52px 89px 0 -104px rgba(255, 255, 255, 0.861), 82px -46px 0 -104px rgba(255, 255, 255, 0.474), 66px 130px 0 -104px rgba(255, 255, 255, 0.564), 144px -35px 0 -104px rgba(255, 255, 255, 0.227), -34px 52px 0 -104px rgba(255, 255, 255, 0.341), -130px 132px 0 -104px rgba(255, 255, 255, 0.883), -67px -89px 0 -104px rgba(255, 255, 255, 0.793), -22px 51px 0 -104px rgba(255, 255, 255, 0.328), 113px -9px 0 -104px rgba(255, 255, 255, 0.682), 104px -79px 0 -104px rgba(255, 255, 255, 0.155), -82px -17px 0 -104px rgba(255, 255, 255, 0.388), 81px 70px 0 -104px rgba(255, 255, 255, 0.08), -68px 19px 0 -104px rgba(255, 255, 255, 0.811), 141px 25px 0 -104px rgba(255, 255, 255, 0.561), 53px 90px 0 -104px rgba(255, 255, 255, 0.877), -46px -12px 0 -104px rgba(255, 255, 255, 0.156), 96px 8px 0 -104px rgba(255, 255, 255, 0.313), -6px -34px 0 -104px rgba(255, 255, 255, 0.431), -79px 22px 0 -104px rgba(255, 255, 255, 0.18), -79px -130px 0 -104px rgba(255, 255, 255, 0.479), -144px 135px 0 -104px rgba(255, 255, 255, 0.945), 110px -125px 0 -104px rgba(255, 255, 255, 0.35), -72px -80px 0 -104px rgba(255, 255, 255, 0.215), 80px 27px 0 -104px rgba(255, 255, 255, 0.681), 109px 118px 0 -104px rgba(255, 255, 255, 0.966), 114px 66px 0 -104px rgba(255, 255, 255, 0.698), -137px -43px 0 -104px rgba(255, 255, 255, 0.01), -119px 138px 0 -104px rgba(255, 255, 255, 0.857), -118px -117px 0 -104px rgba(255, 255, 255, 0.293), -113px 9px 0 -104px rgba(255, 255, 255, 0.446), 78px -125px 0 -104px rgba(255, 255, 255, 0.223), 23px 111px 0 -104px rgba(255, 255, 255, 0.64), -123px 48px 0 -104px rgba(255, 255, 255, 0.371), -128px 114px 0 -104px rgba(255, 255, 255, 0.636), 56px -75px 0 -104px rgba(255, 255, 255, 0.405), -41px -32px 0 -104px rgba(255, 255, 255, 0.869), -82px 104px 0 -104px rgba(255, 255, 255, 0.732), -40px 144px 0 -104px rgba(255, 255, 255, 0.963), -66px 22px 0 -104px rgba(255, 255, 255, 0.703), 142px 31px 0 -104px rgba(255, 255, 255, 0.113), 125px -33px 0 -104px rgba(255, 255, 255, 0.375), 123px 11px 0 -104px rgba(255, 255, 255, 0.754), -135px 51px 0 -104px rgba(255, 255, 255, 0.897), -30px 62px 0 -104px rgba(255, 255, 255, 0.949), 16px 45px 0 -104px rgba(255, 255, 255, 0.785), 63px 12px 0 -104px rgba(255, 255, 255, 0.34), 70px 126px 0 -104px rgba(255, 255, 255, 0.003), 51px 65px 0 -104px rgba(255, 255, 255, 0.257), 6px -64px 0 -104px rgba(255, 255, 255, 0.08), -70px -37px 0 -104px rgba(255, 255, 255, 0.195), -87px -53px 0 -104px rgba(255, 255, 255, 0.384), -15px 123px 0 -104px rgba(255, 255, 255, 0.6), -7px -14px 0 -104px rgba(255, 255, 255, 0.676), 39px -26px 0 -104px rgba(255, 255, 255, 0.448), -112px 32px 0 -104px rgba(255, 255, 255, 0.071), 65px -37px 0 -104px rgba(255, 255, 255, 0.989), 93px 33px 0 -104px rgba(255, 255, 255, 0.256), -9px -118px 0 -104px rgba(255, 255, 255, 0.419), 137px 39px 0 -104px rgba(255, 255, 255, 0.459), -35px 52px 0 -104px rgba(255, 255, 255, 0.424), 96px -68px 0 -104px rgba(255, 255, 255, 0.151), -136px -107px 0 -104px rgba(255, 255, 255, 0.932), 35px -73px 0 -104px rgba(255, 255, 255, 0.511), 28px 43px 0 -104px rgba(255, 255, 255, 0.021), -32px -104px 0 -104px rgba(255, 255, 255, 0.219), 130px -27px 0 -104px rgba(255, 255, 255, 0.72), -33px -17px 0 -104px rgba(255, 255, 255, 0.121), -64px 32px 0 -104px rgba(255, 255, 255, 0.08), -72px -10px 0 -104px rgba(255, 255, 255, 0.15), -66px 129px 0 -104px rgba(255, 255, 255, 0.919), -81px -142px 0 -104px rgba(255, 255, 255, 0.11), -62px 65px 0 -104px rgba(255, 255, 255, 0.702), -113px -21px 0 -104px rgba(255, 255, 255, 0.733), 64px 18px 0 -104px rgba(255, 255, 255, 0.022), 38px -93px 0 -104px rgba(255, 255, 255, 0.562), -83px 134px 0 -104px rgba(255, 255, 255, 0.446), 141px -11px 0 -104px rgba(255, 255, 255, 0.571), -12px -127px 0 -104px rgba(255, 255, 255, 0.034), -144px 103px 0 -104px rgba(255, 255, 255, 0.961), 29px -37px 0 -104px rgba(255, 255, 255, 0.543), -106px 8px 0 -104px rgba(255, 255, 255, 0.944), 129px -116px 0 -104px rgba(255, 255, 255, 0.435), 126px -50px 0 -104px rgba(255, 255, 255, 0.246), 26px -88px 0 -104px rgba(255, 255, 255, 0.849), 88px -44px 0 -104px rgba(255, 255, 255, 0.357), -113px -100px 0 -104px rgba(255, 255, 255, 0.389), -81px 89px 0 -104px rgba(255, 255, 255, 0.041), -138px 35px 0 -104px rgba(255, 255, 255, 0.305), -105px -113px 0 -104px rgba(255, 255, 255, 0.159), -71px 108px 0 -104px rgba(255, 255, 255, 0.3), -143px 139px 0 -104px rgba(255, 255, 255, 0.932), 99px 51px 0 -104px rgba(255, 255, 255, 0.048), -53px -35px 0 -104px rgba(255, 255, 255, 0.602), -39px 108px 0 -104px rgba(255, 255, 255, 0.934), -73px 102px 0 -104px rgba(255, 255, 255, 0.103), -42px 106px 0 -104px rgba(255, 255, 255, 0.816), 87px 107px 0 -104px rgba(255, 255, 255, 0.338), 103px 46px 0 -104px rgba(255, 255, 255, 0.564), 93px 54px 0 -104px rgba(255, 255, 255, 0.026), -51px -108px 0 -104px rgba(255, 255, 255, 0.743), 79px 49px 0 -104px rgba(255, 255, 255, 0.328), -43px 43px 0 -104px rgba(255, 255, 255, 0.972), -39px 13px 0 -104px rgba(255, 255, 255, 0.325), 97px -111px 0 -104px rgba(255, 255, 255, 0.33), 22px -83px 0 -104px rgba(255, 255, 255, 0.231), -46px -142px 0 -104px rgba(255, 255, 255, 0.081), -24px 122px 0 -104px rgba(255, 255, 255, 0.534), -1px -120px 0 -104px rgba(255, 255, 255, 0.958), 34px 31px 0 -104px rgba(255, 255, 255, 0.237), -5px -38px 0 -104px rgba(255, 255, 255, 0.701), 52px 88px 0 -104px rgba(255, 255, 255, 0.852), -95px -121px 0 -104px rgba(255, 255, 255, 0.945), -29px -116px 0 -104px rgba(255, 255, 255, 0.729), 134px 72px 0 -104px rgba(255, 255, 255, 0.414), -72px 1px 0 -104px rgba(255, 255, 255, 0.343), -132px 136px 0 -104px rgba(255, 255, 255, 0.523), -99px 141px 0 -104px rgba(255, 255, 255, 0.92), 74px 83px 0 -104px rgba(255, 255, 255, 0.565), -54px -143px 0 -104px rgba(255, 255, 255, 0.344), -126px 20px 0 -104px rgba(255, 255, 255, 0.37), 117px -32px 0 -104px rgba(255, 255, 255, 0.36), -107px 140px 0 -104px rgba(255, 255, 255, 0.743), -102px 91px 0 -104px rgba(255, 255, 255, 0.713), 8px 49px 0 -104px rgba(255, 255, 255, 0.784), -73px -56px 0 -104px rgba(255, 255, 255, 0.258), -112px 2px 0 -104px rgba(255, 255, 255, 0.799), 74px 126px 0 -104px rgba(255, 255, 255, 0.517), 2px -67px 0 -104px rgba(255, 255, 255, 0.987), 16px 120px 0 -104px rgba(255, 255, 255, 0.144), -138px 3px 0 -104px rgba(255, 255, 255, 0.233), 142px 31px 0 -104px rgba(255, 255, 255, 0.641), -119px -134px 0 -104px rgba(255, 255, 255, 0.985), 29px -39px 0 -104px rgba(255, 255, 255, 0.243), -4px -46px 0 -104px rgba(255, 255, 255, 0.436), 55px 142px 0 -104px rgba(255, 255, 255, 0.754), 77px -91px 0 -104px rgba(255, 255, 255, 0.556), 55px 134px 0 -104px rgba(255, 255, 255, 0.594), -66px 73px 0 -104px rgba(255, 255, 255, 0.21), 57px 123px 0 -104px rgba(255, 255, 255, 0.359), 124px 60px 0 -104px rgba(255, 255, 255, 0.231), 33px -79px 0 -104px rgba(255, 255, 255, 0.704), 117px 5px 0 -104px rgba(255, 255, 255, 0.556), -74px 89px 0 -104px rgba(255, 255, 255, 0.748), -137px 23px 0 -104px rgba(255, 255, 255, 0.003), 92px 121px 0 -104px rgba(255, 255, 255, 0.227), 74px 144px 0 -104px rgba(255, 255, 255, 0.879), 72px 6px 0 -104px rgba(255, 255, 255, 0.535), 17px -60px 0 -104px rgba(255, 255, 255, 0.17), -113px 38px 0 -104px rgba(255, 255, 255, 0.034), -20px -86px 0 -104px rgba(255, 255, 255, 0.312), -81px 39px 0 -104px rgba(255, 255, 255, 0.88), 122px 20px 0 -104px rgba(255, 255, 255, 0.904), -99px 5px 0 -104px rgba(255, 255, 255, 0.142), 120px 76px 0 -104px rgba(255, 255, 255, 0.052), -103px -74px 0 -104px rgba(255, 255, 255, 0.102), -83px 21px 0 -104px rgba(255, 255, 255, 0.561), 1px -13px 0 -104px rgba(255, 255, 255, 0.945), 47px -106px 0 -104px rgba(255, 255, 255, 0.926), -47px 48px 0 -104px rgba(255, 255, 255, 0.164), -74px 62px 0 -104px rgba(255, 255, 255, 0.811), 14px 17px 0 -104px rgba(255, 255, 255, 0.093), -3px -125px 0 -104px rgba(255, 255, 255, 0.718), -48px 127px 0 -104px rgba(255, 255, 255, 0.694), -138px -85px 0 -104px rgba(255, 255, 255, 0.338), 142px -28px 0 -104px rgba(255, 255, 255, 0.856), -2px -103px 0 -104px rgba(255, 255, 255, 0.569), -24px -86px 0 -104px rgba(255, 255, 255, 0.071), -97px 88px 0 -104px rgba(255, 255, 255, 0.894), 52px 133px 0 -104px rgba(255, 255, 255, 0.037), -69px 112px 0 -104px rgba(255, 255, 255, 0.903), -49px 77px 0 -104px rgba(255, 255, 255, 0.708), -54px -23px 0 -104px rgba(255, 255, 255, 0.299), -130px 97px 0 -104px rgba(255, 255, 255, 0.578), 49px -123px 0 -104px rgba(255, 255, 255, 0.136), -142px 93px 0 -104px rgba(255, 255, 255, 0.189), 91px 124px 0 -104px rgba(255, 255, 255, 0.202), -111px 132px 0 -104px rgba(255, 255, 255, 0.35), 72px 33px 0 -104px rgba(255, 255, 255, 0.985), 6px 137px 0 -104px rgba(255, 255, 255, 0.913), 126px 18px 0 -104px rgba(255, 255, 255, 0.878), -86px -45px 0 -104px rgba(255, 255, 255, 0.4), -117px 70px 0 -104px rgba(255, 255, 255, 0.821), 2px -4px 0 -104px rgba(255, 255, 255, 0.985), 5px -116px 0 -104px rgba(255, 255, 255, 0.855), 138px -70px 0 -104px rgba(255, 255, 255, 0.087), 83px 66px 0 -104px rgba(255, 255, 255, 0.871), 39px -54px 0 -104px rgba(255, 255, 255, 0.723), -17px 135px 0 -104px rgba(255, 255, 255, 0.079), 103px -23px 0 -104px rgba(255, 255, 255, 0.618), 64px -36px 0 -104px rgba(255, 255, 255, 0.845), -19px 109px 0 -104px rgba(255, 255, 255, 0.655), 102px -98px 0 -104px rgba(255, 255, 255, 0.966), -40px -131px 0 -104px rgba(255, 255, 255, 0.511), -11px 27px 0 -104px rgba(255, 255, 255, 0.171), -46px 45px 0 -104px rgba(255, 255, 255, 0.919), -18px 100px 0 -104px rgba(255, 255, 255, 0.639), 117px 126px 0 -104px rgba(255, 255, 255, 0.398), 59px 26px 0 -104px rgba(255, 255, 255, 0.7), -61px 72px 0 -104px rgba(255, 255, 255, 0.083), -134px -7px 0 -104px rgba(255, 255, 255, 0.008), -71px 120px 0 -104px rgba(255, 255, 255, 0.581), 63px 19px 0 -104px rgba(255, 255, 255, 0.491), -30px 12px 0 -104px rgba(255, 255, 255, 0.721), 50px 11px 0 -104px rgba(255, 255, 255, 0.716), 57px -138px 0 -104px rgba(255, 255, 255, 0.004), -30px 4px 0 -104px rgba(255, 255, 255, 0.336), 97px -42px 0 -104px rgba(255, 255, 255, 0.736), 111px -123px 0 -104px rgba(255, 255, 255, 0.338), -102px -18px 0 -104px rgba(255, 255, 255, 0.086), 116px 142px 0 -104px rgba(255, 255, 255, 0.338), 47px -56px 0 -104px rgba(255, 255, 255, 0.562), 144px -63px 0 -104px rgba(255, 255, 255, 0.972), -111px 7px 0 -104px rgba(255, 255, 255, 0.368), -21px -35px 0 -104px rgba(255, 255, 255, 0.776), 4px 56px 0 -104px rgba(255, 255, 255, 0.979), 77px -4px 0 -104px rgba(255, 255, 255, 0.144), 22px 45px 0 -104px rgba(255, 255, 255, 0.24), -138px -88px 0 -104px rgba(255, 255, 255, 0.22), 33px -43px 0 -104px rgba(255, 255, 255, 0.379), 140px 56px 0 -104px rgba(255, 255, 255, 0.941), -20px -20px 0 -104px rgba(255, 255, 255, 0.418), -2px -107px 0 -104px rgba(255, 255, 255, 0.056), -50px 33px 0 -104px rgba(255, 255, 255, 0.953), -69px -124px 0 -104px rgba(255, 255, 255, 0.295), -144px 137px 0 -104px rgba(255, 255, 255, 0.425), -96px -89px 0 -104px rgba(255, 255, 255, 0.761), 122px -1px 0 -104px rgba(255, 255, 255, 0.128), -64px -18px 0 -104px rgba(255, 255, 255, 0.572), 94px -76px 0 -104px rgba(255, 255, 255, 0.921), -79px 96px 0 -104px rgba(255, 255, 255, 0.405), 117px -33px 0 -104px rgba(255, 255, 255, 0.818), 8px -133px 0 -104px rgba(255, 255, 255, 0.651), -76px 58px 0 -104px rgba(255, 255, 255, 0.307), 136px -49px 0 -104px rgba(255, 255, 255, 0.313), 107px 46px 0 -104px rgba(255, 255, 255, 0.549), 111px -58px 0 -104px rgba(255, 255, 255, 0.53), 113px 128px 0 -104px rgba(255, 255, 255, 0.86), -67px -92px 0 -104px rgba(255, 255, 255, 0.617), 25px -110px 0 -104px rgba(255, 255, 255, 0.523), 50px 142px 0 -104px rgba(255, 255, 255, 0.154), 73px -99px 0 -104px rgba(255, 255, 255, 0.749), 136px -133px 0 -104px rgba(255, 255, 255, 0.013), 127px 134px 0 -104px rgba(255, 255, 255, 0.58), -8px -69px 0 -104px rgba(255, 255, 255, 0.937), -137px -32px 0 -104px rgba(255, 255, 255, 0.772), -1px 139px 0 -104px rgba(255, 255, 255, 0.882), -89px -141px 0 -104px rgba(255, 255, 255, 0.375), 63px 35px 0 -104px rgba(255, 255, 255, 0.29), -120px -92px 0 -104px rgba(255, 255, 255, 0.596), -139px -41px 0 -104px rgba(255, 255, 255, 0.764), -75px -70px 0 -104px rgba(255, 255, 255, 0.698), 108px -8px 0 -104px rgba(255, 255, 255, 0.042), 72px 11px 0 -104px rgba(255, 255, 255, 0.517), 50px -136px 0 -104px rgba(255, 255, 255, 0.315), -42px -132px 0 -104px rgba(255, 255, 255, 0.848), 125px -6px 0 -104px rgba(255, 255, 255, 0.15), -109px 143px 0 -104px rgba(255, 255, 255, 0.239), -111px -104px 0 -104px rgba(255, 255, 255, 0.797), 58px -56px 0 -104px rgba(255, 255, 255, 0.052), 40px 100px 0 -104px rgba(255, 255, 255, 0.878), 141px 115px 0 -104px rgba(255, 255, 255, 0.189), 10px -24px 0 -104px rgba(255, 255, 255, 0.17), 97px -54px 0 -104px rgba(255, 255, 255, 0.337), -60px 127px 0 -104px rgba(255, 255, 255, 0.691), -28px -36px 0 -104px rgba(255, 255, 255, 0.752), 36px 40px 0 -104px rgba(255, 255, 255, 0.58), -136px -9px 0 -104px rgba(255, 255, 255, 0.749), -50px -99px 0 -104px rgba(255, 255, 255, 0.019), -103px 130px 0 -104px rgba(255, 255, 255, 0.039), -143px -43px 0 -104px rgba(255, 255, 255, 0.868), 107px 106px 0 -104px rgba(255, 255, 255, 0.117), -45px 100px 0 -104px rgba(255, 255, 255, 0.534), -50px -22px 0 -104px rgba(255, 255, 255, 0.938), -71px 123px 0 -104px rgba(255, 255, 255, 0.49), 109px 69px 0 -104px rgba(255, 255, 255, 0.806), -82px -83px 0 -104px rgba(255, 255, 255, 0.222), -77px -68px 0 -104px rgba(255, 255, 255, 0.057), -125px -127px 0 -104px rgba(255, 255, 255, 0.927), -81px -8px 0 -104px rgba(255, 255, 255, 0.858), -115px 55px 0 -104px rgba(255, 255, 255, 0.167), 111px 47px 0 -104px rgba(255, 255, 255, 0.022), 11px 36px 0 -104px rgba(255, 255, 255, 0.324), 57px -140px 0 -104px rgba(255, 255, 255, 0.899), 56px 97px 0 -104px rgba(255, 255, 255, 0.425), -104px 10px 0 -104px rgba(255, 255, 255, 0.326), 33px 104px 0 -104px rgba(255, 255, 255, 0.09), -106px 21px 0 -104px rgba(255, 255, 255, 0.698), 63px 29px 0 -104px rgba(255, 255, 255, 0.832), -73px -139px 0 -104px rgba(255, 255, 255, 0.737), -6px -75px 0 -104px rgba(255, 255, 255, 0.432), -128px 82px 0 -104px rgba(255, 255, 255, 0.149), 80px -128px 0 -104px rgba(255, 255, 255, 0.901), -99px 104px 0 -104px rgba(255, 255, 255, 0.551), -40px 25px 0 -104px rgba(255, 255, 255, 0.159), -116px 5px 0 -104px rgba(255, 255, 255, 0.879);
+        }
+
+        .pluto {
+            height: 780px;
+            width: 780px;
+            margin-top: -450px;
+            margin-left: -320px;
+            -webkit-animation: orb 7439.70741s linear infinite;
+            animation: orb 7439.70741s linear infinite;
+        }
+
+        .pluto:before {
+            height: 3px;
+            width: 3px;
+            background: #fff;
+            margin-top: -1.5px;
+            margin-left: -1.5px;
+        }
+
+        .hide {
+            display: none;
+        }
+
+        .links {
+            margin-top: 5px !important;
+            font-size: 1em !important;
+        }
+
+        @-webkit-keyframes orb {
+            from {
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+            to {
+                -webkit-transform: rotate(-360deg);
+                transform: rotate(-360deg);
+            }
+        }
+
+        @keyframes orb {
+            from {
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+            to {
+                -webkit-transform: rotate(-360deg);
+                transform: rotate(-360deg);
+            }
+        }
+
+        .solar-syst {
+            background: -webkit-radial-gradient(bottom ellipse, #1c2837 0%, #050608 100%);
+            background: radial-gradient(ellipse at bottom, #1c2837 0%, #050608 100%);
+            position: fixed;
+            top: 0px;
+            bottom: 0px;
+            width: 100%;
+            z-index: 99;
+
+            /* background-image: url(http://cuing-1253529229.cossh.myqcloud.com/marry/5.jpg); */
+            /* background-size: cover; */
+            /* background: rgba(255, 255, 255, 0.5) url(http://cuing-1253529229.cossh.myqcloud.com/marry/5.jpg) no-repeat; */
+            /* background-size: cover; */
+        }
+
+        .splash {
+            background: black;
+            position: fixed;
+            top: 0px;
+            bottom: 0px;
+            width: 100%;
+            z-index: 9;
+        }
+
+        .splash img {
+            display: block;
+            width: 100%;
+        }
+
+
+        .canvas {
+            width: 320px;
+            height: 100px;
+            position: absolute;
+            top: 13%;
+            z-index: 999;
+            position: fixed;
+            /* opacity: 0.8; */
+        }
+
+        .canvas.canvas1 {
+            top: 67%;
+        }
+
+        #heart {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, .2);
+            z-index: 9999;
+            opacity: 0.5
+        }
+
+
+        .range {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            position: absolute;
+            left: 50%;
+            /* top: 50%; */
+            bottom: 50px;
+            width: 250px;
+            margin-top: 10px;
+            transform: translate(-50%, -50%);
+        }
+
+        input[type=range]::-webkit-slider-runnable-track {
+            -webkit-appearance: none;
+            background: rgba(59, 173, 227, 1);
+            background: -moz-linear-gradient(45deg, rgba(59, 173, 227, 1) 0%, rgba(87, 111, 230, 1) 25%, rgba(152, 68, 183, 1) 51%, rgba(255, 53, 127, 1) 100%);
+            background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(59, 173, 227, 1)), color-stop(25%, rgba(87, 111, 230, 1)), color-stop(51%, rgba(152, 68, 183, 1)), color-stop(100%, rgba(255, 53, 127, 1)));
+            background: -webkit-linear-gradient(45deg, rgba(59, 173, 227, 1) 0%, rgba(87, 111, 230, 1) 25%, rgba(152, 68, 183, 1) 51%, rgba(255, 53, 127, 1) 100%);
+            background: -o-linear-gradient(45deg, rgba(59, 173, 227, 1) 0%, rgba(87, 111, 230, 1) 25%, rgba(152, 68, 183, 1) 51%, rgba(255, 53, 127, 1) 100%);
+            background: -ms-linear-gradient(45deg, rgba(59, 173, 227, 1) 0%, rgba(87, 111, 230, 1) 25%, rgba(152, 68, 183, 1) 51%, rgba(255, 53, 127, 1) 100%);
+            background: linear-gradient(45deg, rgba(59, 173, 227, 1) 0%, rgba(87, 111, 230, 1) 25%, rgba(152, 68, 183, 1) 51%, rgba(255, 53, 127, 1) 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3bade3 ', endColorstr='#ff357f ', GradientType=1);
+            height: 2px;
+        }
+
+        input[type=range]:focus {
+            outline: none;
+        }
+
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            border: 2px solid;
+            border-radius: 50%;
+            height: 25px;
+            width: 25px;
+            max-width: 80px;
+            position: relative;
+            bottom: 11px;
+            background-color: #1d1c25;
+            cursor: -webkit-grab;
+
+            -webkit-transition: border 1000ms ease;
+            transition: border 1000ms ease;
+        }
+
+        .range.blue::-webkit-slider-thumb {
+            border-color: rgb(59, 173, 227);
+        }
+
+        .range.ltpurple::-webkit-slider-thumb {
+            border-color: rgb(87, 111, 230);
+        }
+
+        .range.purple::-webkit-slider-thumb {
+            border-color: rgb(152, 68, 183);
+        }
+
+        .range.pink::-webkit-slider-thumb {
+            border-color: rgb(255, 53, 127);
+        }
+
+        .range.blue::-moz-range-thumb {
+            border-color: rgb(59, 173, 227);
+        }
+
+        .range.ltpurple::-moz-range-thumb {
+            border-color: rgb(87, 111, 230);
+        }
+
+        .range.purple::-moz-range-thumb {
+            border-color: rgb(152, 68, 183);
+        }
+
+        .range.pink::-moz-range-thumb {
+            border-color: rgb(255, 53, 127);
+        }
+
+        input[type=range]::-webkit-slider-thumb:active {
+            cursor: -webkit-grabbing;
+        }
+
+        input[type=range]::-moz-range-thumb:active {
+            cursor: -moz-grabbing;
+        }
+        /* .earth {
+    background-image: url(http://cuing-1253529229.cossh.myqcloud.com/marry/2.jpg);
+    background-size: cover;
+} */
+    </style>
+</head>
+
+<body>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+
+    <div class="my-gallery" itemscope>
+
+        <figure itemprop="associatedMedia" itemscope>
+            <a href="http://cuing-1253529229.cossh.myqcloud.com/marry/1.jpg" itemprop="contentUrl" data-size="1036x729">
+                <img src="http://cuing-1253529229.cossh.myqcloud.com/marry/min/1.jpg" itemprop="thumbnail" alt="Image description" />
+            </a>
+        </figure>
+
+        <figure itemprop="associatedMedia" itemscope>
+            <a href="http://cuing-1253529229.cossh.myqcloud.com/marry/2.jpg" itemprop="contentUrl" data-size="691x1037">
+                <img src="http://cuing-1253529229.cossh.myqcloud.com/marry/min/2.jpg" itemprop="thumbnail" alt="Image description" />
+            </a>
+        </figure>
+        <figure itemprop="associatedMedia" itemscope>
+            <a href="http://cuing-1253529229.cossh.myqcloud.com/marry/3.jpg" itemprop="contentUrl" data-size="1037x1036">
+                <img src="http://cuing-1253529229.cossh.myqcloud.com/marry/min/3.jpg" itemprop="thumbnail" alt="Image description" />
+            </a>
+        </figure>
+        <figure itemprop="associatedMedia" itemscope>
+            <a href="http://cuing-1253529229.cossh.myqcloud.com/marry/5.jpg" itemprop="contentUrl" data-size="691x1037">
+                <img src="http://cuing-1253529229.cossh.myqcloud.com/marry/min/5.jpg" itemprop="thumbnail" alt="Image description" />
+            </a>
+        </figure>
+        <figure itemprop="associatedMedia" itemscope>
+            <a href="http://cuing-1253529229.cossh.myqcloud.com/marry/10.jpg" itemprop="contentUrl" data-size="691x1037">
+                <img src="http://cuing-1253529229.cossh.myqcloud.com/marry/min/10.jpg" itemprop="thumbnail" alt="Image description" />
+            </a>
+        </figure>
+        <figure itemprop="associatedMedia" itemscope>
+            <a href="http://cuing-1253529229.cossh.myqcloud.com/marry/7.jpg" itemprop="contentUrl" data-size="1037x691">
+                <img src="http://cuing-1253529229.cossh.myqcloud.com/marry/min/7.jpg" itemprop="thumbnail" alt="Image description" />
+            </a>
+        </figure>
+        <figure itemprop="associatedMedia" itemscope>
+            <a href="http://cuing-1253529229.cossh.myqcloud.com/marry/8.jpg" itemprop="contentUrl" data-size="691x1037">
+                <img src="http://cuing-1253529229.cossh.myqcloud.com/marry/min/8.jpg" itemprop="thumbnail" alt="Image description" />
+            </a>
+        </figure>
+
+        <figure itemprop="associatedMedia" itemscope>
+            <a href="http://cuing-1253529229.cossh.myqcloud.com/marry/9.jpg" itemprop="contentUrl" data-size="768x1152">
+                <img src="http://cuing-1253529229.cossh.myqcloud.com/marry/min/9.jpg" itemprop="thumbnail" alt="Image description" />
+            </a>
+        </figure>
+
+        <figure itemprop="associatedMedia" itemscope>
+            <a href="http://cuing-1253529229.cossh.myqcloud.com/marry/12.jpg" itemprop="contentUrl" data-size="691x1037">
+                <img src="http://cuing-1253529229.cossh.myqcloud.com/marry/min/12.jpg" itemprop="thumbnail" alt="Image description" />
+            </a>
+        </figure>
+        <figure itemprop="associatedMedia" itemscope>
+            <a href="http://cuing-1253529229.cossh.myqcloud.com/marry/11.jpg" itemprop="contentUrl" data-size="1037x691">
+                <img src="http://cuing-1253529229.cossh.myqcloud.com/marry/min/11.jpg" itemprop="thumbnail" alt="Image description" />
+            </a>
+        </figure>
+        <figure itemprop="associatedMedia" itemscope>
+            <a href="http://cuing-1253529229.cossh.myqcloud.com/marry/13.jpg" itemprop="contentUrl" data-size="768x1152">
+                <img src="http://cuing-1253529229.cossh.myqcloud.com/marry/min/13.jpg" itemprop="thumbnail" alt="Image description" />
+            </a>
+        </figure>
+        <figure itemprop="associatedMedia" itemscope>
+            <a href="http://cuing-1253529229.cossh.myqcloud.com/marry/6.jpg" itemprop="contentUrl" data-size="691x1037">
+                <img src="http://cuing-1253529229.cossh.myqcloud.com/marry/min/6.jpg" itemprop="thumbnail" alt="Image description" />
+            </a>
+        </figure>
+        <figure itemprop="associatedMedia" itemscope>
+            <a href="http://cuing-1253529229.cossh.myqcloud.com/marry/14.jpg" itemprop="contentUrl" data-size="1036x691">
+                <img src="http://cuing-1253529229.cossh.myqcloud.com/marry/min/14.jpg" itemprop="thumbnail" alt="Image description" />
+            </a>
+        </figure>
+        <figure itemprop="associatedMedia" itemscope>
+            <a href="http://cuing-1253529229.cossh.myqcloud.com/marry/15.jpg" itemprop="contentUrl" data-size="691x1037">
+                <img src="http://cuing-1253529229.cossh.myqcloud.com/marry/min/15.jpg" itemprop="thumbnail" alt="Image description" />
+            </a>
+        </figure>
+        <figure itemprop="associatedMedia" itemscope>
+            <a href="http://cuing-1253529229.cossh.myqcloud.com/marry/16.jpg" itemprop="contentUrl" data-size="691x1060">
+                <img src="http://cuing-1253529229.cossh.myqcloud.com/marry/min/16.jpg" itemprop="thumbnail" alt="Image description" />
+            </a>
+        </figure>
+
+        <figure itemprop="associatedMedia" itemscope>
+            <a href="http://cuing-1253529229.cossh.myqcloud.com/marry/18.jpg" itemprop="contentUrl" data-size="691x1037">
+                <img src="http://cuing-1253529229.cossh.myqcloud.com/marry/min/15.jpg" itemprop="thumbnail" alt="Image description" />
+            </a>
+        </figure>
+
+
+
+
+
+
+
+    </div>
+    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+        <!-- Background of PhotoSwipe. 
+                 It's a separate element as animating opacity is faster than rgba(). -->
+        <div class="pswp__bg"></div>
+
+        <!-- Slides wrapper with overflow:hidden. -->
+        <div class="pswp__scroll-wrap">
+
+            <!-- Container that holds slides. 
+                    PhotoSwipe keeps only 3 of them in the DOM to save memory.
+                    Don't modify these 3 pswp__item elements, data is added later on. -->
+            <div class="pswp__container">
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+            </div>
+
+            <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+            <div class="pswp__ui pswp__ui--hidden">
+
+                <div class="pswp__top-bar">
+
+                    <!--  Controls are self-explanatory. Order can be changed. -->
+
+                    <div class="pswp__counter"></div>
+
+                    <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                    <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                    <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                    <!-- element will get class pswp__preloader--active when preloader is running -->
+                    <div class="pswp__preloader">
+                        <div class="pswp__preloader__icn">
+                            <div class="pswp__preloader__cut">
+                                <div class="pswp__preloader__donut"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                    <div class="pswp__share-tooltip"></div>
+                </div>
+
+                <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+                </button>
+
+                <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+                </button>
+
+                <div class="pswp__caption">
+                    <div class="pswp__caption__center"></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <canvas width="320px" class="canvas canvas2">
+    </canvas>
+    <canvas width="320px" class="canvas canvas1">
+    </canvas>
+    <canvas id="heart" class="canvas3"></canvas>
+    <div class="splash" id="splashId">
+        <img src="http://cuing-1253529229.cossh.myqcloud.com/marry/5.jpg">
+        <input type="range" min="-100" max="0" value="0" class="range blue" />
+    </div>
+    <div class='solar-syst' id="solarSyst">
+        <div class='sun'></div>
+        <div class='mercury'></div>
+        <div class='venus'></div>
+        <div class='earth'></div>
+        <div class='mars'></div>
+        <div class='jupiter'></div>
+        <div class='saturn'></div>
+        <div class='uranus'></div>
+        <div class='neptune'></div>
+        <div class='pluto'></div>
+        <div class='asteroids-belt'></div>
+    </div>
+    <audio src="http://cuing-1253529229.cossh.myqcloud.com/marry.mp3" autoplay preload="auto" loop volume="5" id="audiomusic"></audio>
+    <script src="http://cuing-1253529229.cossh.myqcloud.com/photoswipe-ui-default.min.js"></script>
+    <script src="http://cuing-1253529229.cossh.myqcloud.com/anime.min.js"></script>
+    <script>
+        var initPhotoSwipeFromDOM = function (gallerySelector) {
+            // parse slide data (url, title, size ...) from DOM elements 
+            // (children of gallerySelector)
+            var parseThumbnailElements = function (el) {
+                var thumbElements = el.childNodes,
+                    numNodes = thumbElements.length,
+                    items = [],
+                    figureEl,
+                    linkEl,
+                    size,
+                    item;
+
+                for (var i = 0; i < numNodes; i++) {
+
+                    figureEl = thumbElements[i]; // <figure> element
+
+                    // include only element nodes 
+                    if (figureEl.nodeType !== 1) {
+                        continue;
+                    }
+
+                    linkEl = figureEl.children[0]; // <a> element
+
+                    size = linkEl.getAttribute('data-size').split('x');
+
+                    // create slide object
+                    item = {
+                        src: linkEl.getAttribute('href'),
+                        w: parseInt(size[0], 10),
+                        h: parseInt(size[1], 10)
+                    };
+
+
+
+                    if (figureEl.children.length > 1) {
+                        // <figcaption> content
+                        item.title = figureEl.children[1].innerHTML;
+                    }
+
+                    if (linkEl.children.length > 0) {
+                        // <img> thumbnail element, retrieving thumbnail url
+                        item.msrc = linkEl.children[0].getAttribute('src');
+                    }
+
+                    item.el = figureEl; // save link to element for getThumbBoundsFn
+                    items.push(item);
+                }
+
+                return items;
+            };
+
+            // find nearest parent element
+            var closest = function closest(el, fn) {
+                return el && (fn(el) ? el : closest(el.parentNode, fn));
+            };
+
+            // triggers when user clicks on thumbnail
+            var onThumbnailsClick = function (e) {
+                e = e || window.event;
+                e.preventDefault ? e.preventDefault() : e.returnValue = false;
+
+                var eTarget = e.target || e.srcElement;
+
+                // find root element of slide
+                var clickedListItem = closest(eTarget, function (el) {
+                    return (el.tagName && el.tagName.toUpperCase() === 'FIGURE');
+                });
+
+                if (!clickedListItem) {
+                    return;
+                }
+
+                // find index of clicked item by looping through all child nodes
+                // alternatively, you may define index via data- attribute
+                var clickedGallery = clickedListItem.parentNode,
+                    childNodes = clickedListItem.parentNode.childNodes,
+                    numChildNodes = childNodes.length,
+                    nodeIndex = 0,
+                    index;
+
+                for (var i = 0; i < numChildNodes; i++) {
+                    if (childNodes[i].nodeType !== 1) {
+                        continue;
+                    }
+
+                    if (childNodes[i] === clickedListItem) {
+                        index = nodeIndex;
+                        break;
+                    }
+                    nodeIndex++;
+                }
+
+
+
+                if (index >= 0) {
+                    // open PhotoSwipe if valid index found
+                    openPhotoSwipe(index, clickedGallery);
+                }
+                return false;
+            };
+
+            // parse picture index and gallery index from URL (#&pid=1&gid=2)
+            var photoswipeParseHash = function () {
+                var hash = window.location.hash.substring(1),
+                    params = {};
+
+                if (hash.length < 5) {
+                    return params;
+                }
+
+                var vars = hash.split('&');
+                for (var i = 0; i < vars.length; i++) {
+                    if (!vars[i]) {
+                        continue;
+                    }
+                    var pair = vars[i].split('=');
+                    if (pair.length < 2) {
+                        continue;
+                    }
+                    params[pair[0]] = pair[1];
+                }
+
+                if (params.gid) {
+                    params.gid = parseInt(params.gid, 10);
+                }
+
+                return params;
+            };
+
+            var openPhotoSwipe = function (index, galleryElement, disableAnimation, fromURL) {
+                var pswpElement = document.querySelectorAll('.pswp')[0],
+                    gallery,
+                    options,
+                    items;
+
+                items = parseThumbnailElements(galleryElement);
+
+                // define options (if needed)
+                options = {
+
+                    // define gallery index (for URL)
+                    galleryUID: galleryElement.getAttribute('data-pswp-uid'),
+
+                    getThumbBoundsFn: function (index) {
+                        // See Options -> getThumbBoundsFn section of documentation for more info
+                        var thumbnail = items[index].el.getElementsByTagName('img')[0], // find thumbnail
+                            pageYScroll = window.pageYOffset || document.documentElement.scrollTop,
+                            rect = thumbnail.getBoundingClientRect();
+
+                        return {
+                            x: rect.left,
+                            y: rect.top + pageYScroll,
+                            w: rect.width
+                        };
+                    }
+
+                };
+
+                // PhotoSwipe opened from URL
+                if (fromURL) {
+                    if (options.galleryPIDs) {
+                        // parse real index when custom PIDs are used 
+                        // http://photoswipe.com/documentation/faq.html#custom-pid-in-url
+                        for (var j = 0; j < items.length; j++) {
+                            if (items[j].pid == index) {
+                                options.index = j;
+                                break;
+                            }
+                        }
+                    } else {
+                        // in URL indexes start from 1
+                        options.index = parseInt(index, 10) - 1;
+                    }
+                } else {
+                    options.index = parseInt(index, 10);
+                }
+
+                // exit if index not found
+                if (isNaN(options.index)) {
+                    return;
+                }
+
+                if (disableAnimation) {
+                    options.showAnimationDuration = 0;
+                }
+
+                // Pass data to PhotoSwipe and initialize it
+                gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
+                gallery.init();
+            };
+
+            // loop through all gallery elements and bind events
+            var galleryElements = document.querySelectorAll(gallerySelector);
+
+            for (var i = 0, l = galleryElements.length; i < l; i++) {
+                galleryElements[i].setAttribute('data-pswp-uid', i + 1);
+                galleryElements[i].onclick = onThumbnailsClick;
+            }
+
+            // Parse URL and open gallery if it contains #&pid=3&gid=1
+            var hashData = photoswipeParseHash();
+            if (hashData.pid && hashData.gid) {
+                openPhotoSwipe(hashData.pid, galleryElements[hashData.gid - 1], true, true);
+            }
+        };
+
+        // execute above function
+        initPhotoSwipeFromDOM('.my-gallery');
+
+        setTimeout(function () {
+            setTimeout(function () {
+                anime({
+                    targets: '#solarSyst',
+                    opacity: 0,
+                    duration: 3000,
+                    complete: function (anim) {
+                        document.getElementById('solarSyst').style.display = 'none';
+                        // completedLogEl.value = 'completed : ' + anim.completed;
+                    }
+                });
+                anime({
+                    targets: 'canvas',
+                    opacity: 0,
+                    duration: 3000,
+                    complete: function (anim) {
+                        var $doms = document.getElementsByTagName('canvas');
+                        for (var i = 0, len = $doms.length; i < len; i++) {
+                            $doms[i].style.display='none';
+                        }
+                        // completedLogEl.value = 'completed : ' + anim.completed;
+                    }
+                });
+                unlockPhoto();
+            }, 6000)
+
+            drawHeart();
+            // document.getElementsByClassName('my-gallery')[0].style.display = 'block';
+        }, 8000)
+        drawText();
+
+        function loadImage(src, fn) {
+            var img = new Image();
+            img.onload = function () {
+                fn ? fn() : null;
+            }
+            img.src = src;
+        }
+
+        function drawText1() {
+            var ctx = document.querySelector(".canvas1").getContext("2d"),
+                dashLen = 220,
+                dashOffset = dashLen,
+                speed = 20,
+                txt = "YES I DO!",
+                x = 60,
+                i = 0;
+
+            ctx.font = "40px Comic Sans MS, cursive, TSCu_Comic, sans-serif";
+            ctx.lineWidth = 2;
+            ctx.lineJoin = "round";
+            ctx.globalAlpha = 2 / 3;
+            ctx.strokeStyle = ctx.fillStyle = "#FFFFFF";
+
+            (function loop() {
+                ctx.clearRect(x, 0, 60, 100);
+                ctx.setLineDash([dashLen - dashOffset, dashOffset - speed]); // create a long dash mask
+                dashOffset -= speed; // reduce dash length
+                ctx.strokeText(txt[i], x, 90); // stroke letter
+
+                if (dashOffset > 0) requestAnimationFrame(loop); // animate
+                else {
+                    ctx.fillText(txt[i], x, 90); // fill final letter
+                    dashOffset = dashLen; // prep next char
+                    x += ctx.measureText(txt[i++]).width + ctx.lineWidth * Math.random();
+                    ctx.setTransform(1, 0, 0, 1, 0, 3 * Math.random()); // random y-delta
+                    ctx.rotate(Math.random() * 0.005); // random rotation
+                    if (i < txt.length) {
+                        requestAnimationFrame(loop);
+                    } else {
+
+                    }
+                }
+            })();
+        }
+
+        function drawText() {
+            var ctx = document.querySelector("canvas").getContext("2d"),
+                dashLen = 220,
+                dashOffset = dashLen,
+                speed = 20,
+                txt = "WILL U MARRY ME?",
+                x = 40,
+                txt1 = "YES I DO!"
+            i = 0;
+
+            ctx.font = "25px Comic Sans MS, cursive, TSCu_Comic, sans-serif";
+            ctx.lineWidth = 2;
+            ctx.lineJoin = "round";
+            ctx.globalAlpha = 2 / 3;
+            ctx.strokeStyle = ctx.fillStyle = "#FFFFFF";
+
+            (function loop() {
+                ctx.clearRect(x, 0, 60, 100);
+                ctx.setLineDash([dashLen - dashOffset, dashOffset - speed]); // create a long dash mask
+                dashOffset -= speed; // reduce dash length
+                ctx.strokeText(txt[i], x, 90); // stroke letter
+
+                if (dashOffset > 0) requestAnimationFrame(loop); // animate
+                else {
+                    ctx.fillText(txt[i], x, 90); // fill final letter
+                    dashOffset = dashLen; // prep next char
+                    x += ctx.measureText(txt[i++]).width + ctx.lineWidth * Math.random();
+                    ctx.setTransform(1, 0, 0, 1, 0, 3 * Math.random()); // random y-delta
+                    ctx.rotate(Math.random() * 0.005); // random rotation
+                    if (i < txt.length) {
+                        requestAnimationFrame(loop);
+                    } else {
+                        setTimeout(function () {
+                            drawText1();
+                        }, 2000)
+                    }
+                }
+            })();
+        }
+
+        function drawHeart() {
+            window.requestAnimationFrame =
+                window.__requestAnimationFrame ||
+                window.requestAnimationFrame ||
+                window.webkitRequestAnimationFrame ||
+                window.mozRequestAnimationFrame ||
+                window.oRequestAnimationFrame ||
+                window.msRequestAnimationFrame ||
+                (function () {
+                    return function (callback, element) {
+                        var lastTime = element.__lastTime;
+                        if (lastTime === undefined) {
+                            lastTime = 0;
+                        }
+                        var currTime = Date.now();
+                        var timeToCall = Math.max(1, 33 - (currTime - lastTime));
+                        window.setTimeout(callback, timeToCall);
+                        element.__lastTime = currTime + timeToCall;
+                    };
+                })();
+            window.isDevice = (/android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(((navigator.userAgent ||
+                navigator.vendor || window.opera)).toLowerCase()));
+            var loaded = false;
+            var init = function () {
+                if (loaded) return;
+                loaded = true;
+                var mobile = window.isDevice;
+                var koef = mobile ? 0.5 : 1;
+                var canvas = document.getElementById('heart');
+                var ctx = canvas.getContext('2d');
+                var width = canvas.width = koef * innerWidth;
+                var height = canvas.height = koef * innerHeight;
+                var rand = Math.random;
+                ctx.fillStyle = "rgba(0,0,0,1)";
+                ctx.fillRect(0, 0, width, height);
+
+                var heartPosition = function (rad) {
+                    //return [Math.sin(rad), Math.cos(rad)];
+                    return [Math.pow(Math.sin(rad), 3), -(15 * Math.cos(rad) - 5 * Math.cos(2 * rad) - 2 * Math
+                        .cos(3 * rad) - Math.cos(4 * rad))];
+                };
+                var scaleAndTranslate = function (pos, sx, sy, dx, dy) {
+                    return [dx + pos[0] * sx, dy + pos[1] * sy];
+                };
+
+                window.addEventListener('resize', function () {
+                    width = canvas.width = koef * innerWidth;
+                    height = canvas.height = koef * innerHeight;
+                    ctx.fillStyle = "rgba(0,0,0,1)";
+                    ctx.fillRect(0, 0, width, height);
+                });
+
+                var traceCount = mobile ? 20 : 50;
+                var pointsOrigin = [];
+                var i;
+                var dr = mobile ? 0.04 : 0.1;
+                for (i = 0; i < Math.PI * 2; i += dr) pointsOrigin.push(scaleAndTranslate(heartPosition(i), 210, 13,
+                    0, 0));
+                for (i = 0; i < Math.PI * 2; i += dr) pointsOrigin.push(scaleAndTranslate(heartPosition(i), 150, 9,
+                    0, 0));
+                for (i = 0; i < Math.PI * 2; i += dr) pointsOrigin.push(scaleAndTranslate(heartPosition(i), 90, 5,
+                    0, 0));
+                var heartPointsCount = pointsOrigin.length;
+
+                var targetPoints = [];
+                var pulse = function (kx, ky) {
+                    for (i = 0; i < pointsOrigin.length; i++) {
+                        targetPoints[i] = [];
+                        targetPoints[i][0] = kx * pointsOrigin[i][0] + width / 2;
+                        targetPoints[i][1] = ky * pointsOrigin[i][1] + height / 2;
+                    }
+                };
+
+                var e = [];
+                for (i = 0; i < heartPointsCount; i++) {
+                    var x = rand() * width;
+                    var y = rand() * height;
+                    e[i] = {
+                        vx: 0,
+                        vy: 0,
+                        R: 2,
+                        speed: rand() + 5,
+                        q: ~~(rand() * heartPointsCount),
+                        D: 2 * (i % 2) - 1,
+                        force: 0.2 * rand() + 0.7,
+                        f: "hsla(0," + ~~(40 * rand() + 60) + "%," + ~~(60 * rand() + 20) + "%,.3)",
+                        trace: []
+                    };
+                    for (var k = 0; k < traceCount; k++) e[i].trace[k] = {
+                        x: x,
+                        y: y
+                    };
+                }
+
+                var config = {
+                    traceK: 0.4,
+                    timeDelta: 0.01
+                };
+
+                var time = 0;
+                var loop = function () {
+                    var n = -Math.cos(time);
+                    pulse((1 + n) * .5, (1 + n) * .5);
+                    time += ((Math.sin(time)) < 0 ? 9 : (n > 0.8) ? .2 : 1) * config.timeDelta;
+                    ctx.fillStyle = "rgba(0,0,0,.1)";
+                    ctx.fillRect(0, 0, width, height);
+                    for (i = e.length; i--;) {
+                        var u = e[i];
+                        var q = targetPoints[u.q];
+                        var dx = u.trace[0].x - q[0];
+                        var dy = u.trace[0].y - q[1];
+                        var length = Math.sqrt(dx * dx + dy * dy);
+                        if (10 > length) {
+                            if (0.95 < rand()) {
+                                u.q = ~~(rand() * heartPointsCount);
+                            } else {
+                                if (0.99 < rand()) {
+                                    u.D *= -1;
+                                }
+                                u.q += u.D;
+                                u.q %= heartPointsCount;
+                                if (0 > u.q) {
+                                    u.q += heartPointsCount;
+                                }
+                            }
+                        }
+                        u.vx += -dx / length * u.speed;
+                        u.vy += -dy / length * u.speed;
+                        u.trace[0].x += u.vx;
+                        u.trace[0].y += u.vy;
+                        u.vx *= u.force;
+                        u.vy *= u.force;
+                        for (k = 0; k < u.trace.length - 1;) {
+                            var T = u.trace[k];
+                            var N = u.trace[++k];
+                            N.x -= config.traceK * (N.x - T.x);
+                            N.y -= config.traceK * (N.y - T.y);
+                        }
+                        ctx.fillStyle = u.f;
+                        for (k = 0; k < u.trace.length; k++) {
+                            ctx.fillRect(u.trace[k].x, u.trace[k].y, 1, 1);
+                        }
+                    }
+                    //ctx.fillStyle = "rgba(255,255,255,1)";
+                    //for (i = u.trace.length; i--;) ctx.fillRect(targetPoints[i][0], targetPoints[i][1], 2, 2);
+
+                    window.requestAnimationFrame(loop, canvas);
+                };
+                loop();
+            };
+
+            var s = document.readyState;
+            if (s === 'complete' || s === 'loaded' || s === 'interactive') init();
+            else document.addEventListener('DOMContentLoaded', init, false);
+        }
+
+
+        function unlockPhoto() {
+            var inputRange = document.getElementsByClassName('range')[0],
+                maxValue = 100, // the higher the smoother when dragging
+                speed = 5,
+                currValue, rafID;
+
+            // set min/max value
+            inputRange.min = 0;
+            inputRange.max = maxValue;
+
+            // listen for unlock
+            function unlockStartHandler() {
+                // clear raf if trying again
+                window.cancelAnimationFrame(rafID);
+
+                // set to desired value
+                currValue = +this.value;
+            }
+
+            function unlockEndHandler() {
+
+                // store current value
+                currValue = +this.value;
+
+                // determine if we have reached success or not
+                if (currValue >= maxValue) {
+                    successHandler();
+                } else {
+                    rafID = window.requestAnimationFrame(animateHandler);
+                }
+            }
+
+            // handle range animation
+            function animateHandler() {
+
+                // calculate gradient transition
+                var transX = currValue - maxValue;
+
+                // update input range
+                inputRange.value = currValue;
+
+                //Change slide thumb color on mouse up
+                if (currValue < 20) {
+                    inputRange.classList.remove('ltpurple');
+                }
+                if (currValue < 40) {
+                    inputRange.classList.remove('purple');
+                }
+                if (currValue < 60) {
+                    inputRange.classList.remove('pink');
+                }
+
+                // determine if we need to continue
+                if (currValue > -1) {
+                    window.requestAnimationFrame(animateHandler);
+                }
+
+                // decrement value
+                currValue = currValue - speed;
+            }
+
+            // handle successful unlock
+            function successHandler() {
+                anime({
+                    targets: '#splashId',
+                    opacity: 0,
+                    duration: 1000,
+                    complete: function (anim) {
+                        document.getElementById('splashId').style.display = 'none';
+                        // completedLogEl.value = 'completed : ' + anim.completed;
+                    }
+                });
+
+                document.getElementsByTagName('body')[0].style.overflow='auto'
+
+
+
+                // alert('Unlocked');
+            };
+
+            // bind events
+            inputRange.addEventListener('mousedown', unlockStartHandler, false);
+            inputRange.addEventListener('mousestart', unlockStartHandler, false);
+            inputRange.addEventListener('mouseup', unlockEndHandler, false);
+            inputRange.addEventListener('touchend', unlockEndHandler, false);
+
+            // move gradient
+            inputRange.addEventListener('input', function () {
+                //Change slide thumb color on way up
+                if (this.value > 20) {
+                    inputRange.classList.add('ltpurple');
+                }
+                if (this.value > 40) {
+                    inputRange.classList.add('purple');
+                }
+                if (this.value > 60) {
+                    inputRange.classList.add('pink');
+                }
+
+                //Change slide thumb color on way down
+                if (this.value < 20) {
+                    inputRange.classList.remove('ltpurple');
+                }
+                if (this.value < 40) {
+                    inputRange.classList.remove('purple');
+                }
+                if (this.value < 60) {
+                    inputRange.classList.remove('pink');
+                }
+            });
+        }
+
+
+
+        document.addEventListener("WeixinJSBridgeReady", function () {
+            audioAutoPlay('audiomusic');//给个全局函数
+        }, false);
+
+        function audioAutoPlay(id){//全局控制播放函数
+            var audio = document.getElementById(id),
+                play = function() {
+                    audio.play();
+                    document.removeEventListener("touchstart",play, false);
+                };
+            audio.play();
+            document.addEventListener("touchstart",play, false);
+        }
+
+        if (!/micromessenger/i.test(navigator.userAgent)) {
+            audioAutoPlay('audiomusic')
+        }
+
+        //   loadImage('http://cuing-1253529229.cossh.myqcloud.com/marry/5.jpg');
+    </script>
+</body>
+
+</html>
