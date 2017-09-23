@@ -1394,6 +1394,8 @@
         }
 
         if (!/micromessenger/i.test(navigator.userAgent)) {
+            audioAutoPlay('audiomusic')
+        } else {
             LizardLite.weixinReady(cShell => {
                 if (!cShell) {
                     console.error('call wechat failed！！')
@@ -1405,8 +1407,17 @@
                     href: location.href,
                     icon: 'http://cuing-1253529229.cossh.myqcloud.com/love2.jpg',
                 }
+                try {
+                    LizardLite.weixinShell
+                        .share(sData)
+                        .done((obj = {}) => {
+                            shareData.success(obj)
+                        })
+                        .fail((obj = {}) => {
+                            shareData.cancel(obj)
+                        })
+                } catch (err) {}
             })
-            audioAutoPlay('audiomusic')
         }
 
         //   loadImage('http://cuing-1253529229.cossh.myqcloud.com/marry/5.jpg');
