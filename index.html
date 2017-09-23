@@ -1394,6 +1394,18 @@
         }
 
         if (!/micromessenger/i.test(navigator.userAgent)) {
+            LizardLite.weixinReady(cShell => {
+                if (!cShell) {
+                    console.error('call wechat failed！！')
+                    return
+                }
+                var sData = {
+                    title: '咱们结婚啦～',
+                    desc: '葛大豆&崔大胖结婚啦～',
+                    href: location.href,
+                    icon: 'http://cuing-1253529229.cossh.myqcloud.com/love2.jpg',
+                }
+            })
             audioAutoPlay('audiomusic')
         }
 
