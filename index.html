@@ -6,13 +6,12 @@
     <meta name="full-screen" content="yes">
     <meta name="x5-fullscreen" content="true">
     <script src="http://cuing-1253529229.cossh.myqcloud.com/photoswipe.min.js"></script>
-    <meta itemprop="name" content="咱们结婚啦~~"/>
+    <meta itemprop="name" content="咱们结婚啦~"/>
     <meta itemprop="image" content="http://cuing-1253529229.cossh.myqcloud.com/love1.png" />    
-    <meta name="description" content="葛大豆&崔大胖结婚 10月2号">    
+    <meta name="description" content="葛大豆&崔大胖结婚啦～">    
     <link rel="stylesheet" href="http://cuing-1253529229.cossh.myqcloud.com/default-skin.css">
     <link rel="stylesheet" href="http://cuing-1253529229.cossh.myqcloud.com/photoswipe.css">
     <title>咱们结婚啦~</title>
-    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
     <style>
         html,
         body {
@@ -597,10 +596,10 @@
 
 <body>
     <!-- Root element of PhotoSwipe. Must have class pswp. -->
-    <div id='wx_pic' style='display:none;'>
-        <img src='http://cuing-1253529229.cossh.myqcloud.com/love3.png' />
+    <div id='wx_pic' style='margin:0 auto;display:none;'>
+        <img src='http://cuing-1253529229.cossh.myqcloud.com/love2.jpg' />
     </div>
-
+        
     <div class="my-gallery" itemscope>
 
         <figure itemprop="associatedMedia" itemscope>
@@ -779,7 +778,7 @@
     <audio src="http://cuing-1253529229.cossh.myqcloud.com/marry.mp3" autoplay preload="auto" loop volume="5" id="audiomusic"></audio>
     <script src="http://cuing-1253529229.cossh.myqcloud.com/photoswipe-ui-default.min.js"></script>
     <script src="http://cuing-1253529229.cossh.myqcloud.com/anime.min.js"></script>
-    <!-- <script src="//webresource.c-ctrip.com/code/lizard/2.2/web/lite.seed.js" needWeiXin="true"></script> -->
+    <script src="//webresource.c-ctrip.com/code/lizard/2.2/web/lite.seed.js" needWeiXin="true"></script>
     <script>
         var initPhotoSwipeFromDOM = function (gallerySelector) {
             // parse slide data (url, title, size ...) from DOM elements 
@@ -1395,18 +1394,18 @@
         }
 
         if (!/micromessenger/i.test(navigator.userAgent)) {
-            // LizardLite.weixinReady(cShell => {
-            //     if (!cShell) {
-            //         console.error('call wechat failed！！')
-            //         return
-            //     }
-            //     var sData = {
-            //         title: '咱们结婚啦～',
-            //         desc: '葛大豆&崔大胖结婚啦～',
-            //         href: location.href,
-            //         icon: 'http://cuing-1253529229.cossh.myqcloud.com/love2.jpg',
-            //     }
-            // })
+            LizardLite.weixinReady(cShell => {
+                if (!cShell) {
+                    console.error('call wechat failed！！')
+                    return
+                }
+                var sData = {
+                    title: '咱们结婚啦～',
+                    desc: '葛大豆&崔大胖结婚啦～',
+                    href: location.href,
+                    icon: 'http://cuing-1253529229.cossh.myqcloud.com/love2.jpg',
+                }
+            })
             audioAutoPlay('audiomusic')
         }
 
