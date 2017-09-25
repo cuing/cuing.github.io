@@ -6,7 +6,7 @@
     <meta name="full-screen" content="yes">
     <meta name="x5-fullscreen" content="true">
     <meta itemprop="name" content="崔海亮&葛够婚礼邀请"/>
-    <meta itemprop="image" content="http://cuing-1253529229.cossh.myqcloud.com/love1.png" />    
+    <meta itemprop="image" content="https://cuing-1253529229.cossh.myqcloud.com/love1.png" />    
     <meta name="description" content="10月2日 安徽省宿州市灵璧县大庙乡 欢迎您的到来">    
     <title>崔海亮&葛够婚礼邀请</title>
     <style>
@@ -253,7 +253,7 @@
   .pswp--svg .pswp__button,
   .pswp--svg .pswp__button--arrow--left:before,
   .pswp--svg .pswp__button--arrow--right:before {
-    background-image: url(default-skin.svg); }
+    background-image: url(//cuing-1253529229.cossh.myqcloud.com/default-skin.svg); }
   .pswp--svg .pswp__button--arrow--left,
   .pswp--svg .pswp__button--arrow--right {
     background: none; } }
@@ -703,7 +703,7 @@ a.pswp__share--download:hover {
             display: none;
             background: -webkit-radial-gradient(bottom ellipse, #1c2837 0%, #050608 100%);
             background: radial-gradient(ellipse at bottom, #1c2837 0%, #050608 100%);
-            background: url(http://cuing-1253529229.cossh.myqcloud.com/confectionary.png)
+            background: url(//cuing-1253529229.cossh.myqcloud.com/confectionary.png)
 
 
         }
@@ -1254,7 +1254,7 @@ a.pswp__share--download:hover {
 <body>
     <!-- Root element of PhotoSwipe. Must have class pswp. -->
     <div id='wx_pic' style='margin:0 auto;display:none;'>
-        <img src='http://cuing-1253529229.cossh.myqcloud.com/love2.jpg' />
+        <img src='//cuing-1253529229.cossh.myqcloud.com/love2.jpg' />
     </div>
         
     <div class="my-gallery" itemscope>
@@ -1271,7 +1271,7 @@ a.pswp__share--download:hover {
             </a>
         </figure>
         <figure itemprop="associatedMedia" itemscope>
-            <a href="//images3.c-ctrip.com/ztrip/cuingtest/3.jpg" itemprop="contentUrl" data-size="1037x1036">
+            <a href="//images3.c-ctrip.com/ztrip/cuingtest/3.jpg" itemprop="contentUrl" data-size="1037x691">
                 <img src="//images3.c-ctrip.com/ztrip/cuingtest/min/3.jpg" itemprop="thumbnail" alt="Image description" />
             </a>
         </figure>
@@ -1416,7 +1416,7 @@ a.pswp__share--download:hover {
     </canvas>
     <canvas id="heart" class="canvas3"></canvas>
     <div class="splash" id="splashId">
-        <img src="//images3.c-ctrip.com/ztrip/cuingtest/5.jpg">
+        <img id="splashImg" src="//images3.c-ctrip.com/ztrip/cuingtest/5.jpg">
         <input type="range" min="-100" max="0" value="0" class="range blue" />
     </div>
     <div class='solar-syst' id="solarSyst">
@@ -1436,7 +1436,7 @@ a.pswp__share--download:hover {
     <script src="//pages.ctrip.com/ztrip/cuingtest/photoswipe-ui-default.min.js"></script>
     <script src="//pages.ctrip.com/ztrip/cuingtest/anime.min.js"></script>
     <script src="//webresource.c-ctrip.com/code/lizard/2.2/web/lite.seed.js" needWeiXin="true"></script>
-    <audio src="http://cuing-1253529229.cossh.myqcloud.com/marry.mp3" autoplay preload="auto" loop volume="5" id="audiomusic"></audio>    
+    <audio src="//cuing-1253529229.cossh.myqcloud.com/marry.mp3" autoplay preload="auto" loop volume="5" id="audiomusic"></audio>    
     <script>
         var initPhotoSwipeFromDOM = function (gallerySelector) {
             // parse slide data (url, title, size ...) from DOM elements 
@@ -1727,7 +1727,7 @@ a.pswp__share--download:hover {
 
         function drawText() {
             var ctx = document.querySelector("canvas").getContext("2d"),
-                dashLen = 250,
+                dashLen = 260,
                 dashOffset = dashLen,
                 speed = 40,
                 txt = "WILL U MARRY ME?",
@@ -1922,6 +1922,31 @@ a.pswp__share--download:hover {
         }
 
 
+
+        // handle successful unlock
+        function successHandler() {
+            document.getElementsByClassName('my-gallery')[0].style.display='block';
+            anime({
+                targets: '#splashId',
+                opacity: 0,
+                duration: 1000,
+                complete: function (anim) {
+                    document.getElementById('splashId').style.display = 'none';
+                    // document.getElementsByTagName('body')[0].style.overflow='auto'
+                    // completedLogEl.value = 'completed : ' + anim.completed;
+                }
+            });
+
+
+
+
+            // alert('Unlocked');
+        };
+
+        var $splashImg = document.getElementById('splashImg');
+        $splashImg.addEventListener('touchend', successHandler, false)
+
+
         function unlockPhoto() {
             var inputRange = document.getElementsByClassName('range')[0],
                 maxValue = 100, // the higher the smoother when dragging
@@ -1983,25 +2008,6 @@ a.pswp__share--download:hover {
                 currValue = currValue - speed;
             }
 
-            // handle successful unlock
-            function successHandler() {
-                document.getElementsByClassName('my-gallery')[0].style.display='block';
-                anime({
-                    targets: '#splashId',
-                    opacity: 0,
-                    duration: 1000,
-                    complete: function (anim) {
-                        document.getElementById('splashId').style.display = 'none';
-                        // document.getElementsByTagName('body')[0].style.overflow='auto'
-                        // completedLogEl.value = 'completed : ' + anim.completed;
-                    }
-                });
-
-
-
-
-                // alert('Unlocked');
-            };
 
             // bind events
             inputRange.addEventListener('mousedown', unlockStartHandler, false);
@@ -2063,7 +2069,7 @@ a.pswp__share--download:hover {
                     title: '崔海亮&葛够婚礼邀请',
                     desc: '10月2日 安徽省宿州市灵璧县大庙乡 欢迎您的到来',
                     href: location.href,
-                    icon: 'http://cuing-1253529229.cossh.myqcloud.com/love2.jpg',
+                    icon: 'https://cuing-1253529229.cossh.myqcloud.com/love2.jpg',
                 }
                 try {
                     LizardLite.weixinShell
