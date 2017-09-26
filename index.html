@@ -1672,6 +1672,14 @@ a.pswp__share--download:hover {
                 });
             }, 3500)
 
+            setTimeout(function() {
+                document.getElementById('solarSyst').style.display = 'none';
+                var $doms = document.getElementsByTagName('canvas');
+                for (var i = 0, len = $doms.length; i < len; i++) {
+                    $doms[i].style.display='none';
+                }
+            }, 5500)
+
             drawHeart();
             unlockPhoto();            
             // document.getElementsByClassName('my-gallery')[0].style.display = 'block';
